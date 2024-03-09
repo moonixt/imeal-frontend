@@ -230,15 +230,14 @@ code {
   margin: 0;
 }
 
-.home-buttons{
-  display: flex;
-  gap: 20px; /* Adiciona um espaço de 20px entre os botões */
-  grid-row-start: auto;
+.botoes{
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
   padding-top: 20px;
 }
+
+
+
 
 
 .bgimage {
