@@ -28,7 +28,7 @@ const LoginPage = () => {
 
       <div>
       <form onSubmit={loginUser}>
-        <input className="username-pass" type="text" name="username" placeholder=" E-mail" />
+        <input className="username-pass" type="email" name="email" placeholder=" E-mail" />
         <input className="username-pass" name="password" placeholder=" Senha" />
         <input className="username-pass" type="submit" />
       </form>

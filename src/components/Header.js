@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <div className="header">
 
-<ul>        
+<ul >      
 
            
 						<li><Link to="/">Inicio</Link></li>
