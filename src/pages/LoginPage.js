@@ -4,6 +4,7 @@ import { FacebookLoginButton,GoogleLoginButton, } from "react-social-login-butto
 import { loginGoogle,loginFacebook ,logoutFirebase } from '../services/firebaseConfig'
 import { getRedirectResult } from 'firebase/auth'
 import Logphoto from './CSS/logo.jpg'
+import { Link } from "react-router-dom";
 
 
 const LoginPage = () => {    
@@ -48,7 +49,7 @@ const LoginPage = () => {
        </div>
 
        <div className="sign-in-onboard__btnContainer">
-        <button className="btn btn--default btn--white btn--size-m sign-in-onboard__emailOrPhone">Celular</button>
+        <button className="btn btn--default btn--white btn--size-m sign-in-onboard__emailOrPhone"><Link to="/login-celular">Celular</Link></button>
         <button className="btn btn--default btn--white btn--size-m sign-in-onboard__emailOrPhone">E-mail</button>
 
        </div>

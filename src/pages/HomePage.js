@@ -12,12 +12,9 @@ const HomePage = () => {
 
     <div className='search'>
     <div className='flex w-96 rounded bg-white'>
-      <input type='search'
-       name='search'
-      id='search'
-      placeholder='Buscar um Produto' 
+      <input type='search' name='search'id='search' placeholder='Buscar um Produto' 
       className='w-full border -none bg-transparent px-4 py-1 text-gray-900 outline-none focus:outline-none'
-      ></input>
+     ></input>
 
       <button className='m-2 rounded bg-cyan-950 px-4 py-2 text-white'>Buscar</button>
 
