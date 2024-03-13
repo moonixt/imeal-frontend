@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("authTokens", JSON.stringify(data));
       history("/");
     } else {
-      alert("algo deu errado");
+      alert("E-mail ou senha incorreto.");
     }
   };
 

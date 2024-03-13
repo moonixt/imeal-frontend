@@ -58,9 +58,7 @@ code {
 .sign-in-onboard__title {
   font-size: 1.5rem;
   line-height: 30px;
-  color: #414143;
   margin: 0 0 20px;
-  font-weight: 500;
   letter-spacing: .0246em;
   padding-top: 20px;
   
@@ -69,9 +67,6 @@ code {
 
 
 .sign-in-onboard__subtitle{
-  font-size: 1rem;
-  font-weight: 400;
-  color: #717171;
   margin: 0 0 22px;
 }
 
@@ -185,8 +180,7 @@ code {
   margin-bottom: 10px;
 	border-radius: 10px;
 	border: 1px solid #dcdcdc;
-	color: #ea1d2c;
-	font-weight: 500;
+	font-weight:bold
   
 }
 .header ul {
@@ -196,11 +190,7 @@ code {
 .header ul li {
 	list-style: none;
 	margin: 0 25px;
-	color: #3e3e3e;
-}
-.header ul li a {
-	text-decoration: none;
-	color: #3e3e3e;
+	
 }
 
 
@@ -219,6 +209,7 @@ code {
   align-items: center;
   justify-content: center;
   font-size: 3rem;
+  font-weight: ;
   padding-top: 20px;
   
 }
