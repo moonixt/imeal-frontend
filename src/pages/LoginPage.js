@@ -28,6 +28,10 @@ const LoginPage = () => {
         </div>
 
         <div>
+        <h1 className="sign-in-onboard__title">
+            Fazer login
+          </h1>
+          <h2 className="sign-in-onboard__subtitle">Como deseja continuar?</h2>
           <form onSubmit={loginUser}>
             <label className="input input-bordered flex items-center gap-2">
               <svg
@@ -66,16 +70,25 @@ const LoginPage = () => {
                 placeholder="●●●●●"
                 name="password"
               />
+              
             </label>
-            <input className="m-2 rounded bg-cyan-950 px-10 py-2  text-white" type="submit" value="Entrar" />
+            <input
+              className="m-2 rounded bg-cyan-950 px-10 py-2  text-white"
+              type="submit"
+              value="Entrar"
+            />
+            
+            
           </form>
+          <button className="m-2 rounded bg-cyan-950 px-10 py-2 text-white">
+              <Link to="/login-cadastro">Criar uma conta</Link>
+            </button>
+          
+          
         </div>
 
         <div className="sign-in-onboard ">
-          <h1 className="sign-in-onboard__title">
-            Falta pouco para matar sua fome!
-          </h1>
-          <h2 className="sign-in-onboard__subtitle">Como deseja continuar?</h2>
+          
           <span className=".btn .btn__label">
             {" "}
             <FacebookLoginButton onClick={loginFacebook}>
