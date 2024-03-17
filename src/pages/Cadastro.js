@@ -2,15 +2,30 @@ import React from 'react'
 import {useState} from 'react'
 
 const Cadastro = () => {
+
+  const [nome, setNome] = useState("")
+  const [cpf, setCPF] = useState("")
+  const [telefone, setTelefone] = useState("")
+  const [email, setEmail] = useState("")
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    
+    // Aqui você pode definir o que acontecerá quando o formulário for enviado
+    console.log(nome, cpf, telefone, email);
+  }
+
   return (
     <div>
-      <form className=''>
+      <form className='form-group' onSubmit={handleSubmit} >
         <label className="input input-bordered flex items-center gap-2 mb-4">
           <input
             type="text"
             className="grow"
             placeholder="Nome"
             name="nome"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
           />
         </label>
 
@@ -20,6 +35,8 @@ const Cadastro = () => {
             className="grow"
             placeholder="CPF"
             name="cpf"
+            value={cpf}
+            onChange={(e) => setCPF(e.target.value)}
           />
         </label>
 
@@ -29,6 +46,8 @@ const Cadastro = () => {
             className="grow"
             placeholder="Telefone"
             name="telefone"
+            value={telefone}
+            onChange={(e) => setTelefone(e.target.value)}
           />
         </label>
 
@@ -47,6 +66,8 @@ const Cadastro = () => {
             className="grow"
             placeholder="Email"
             name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </label>
         <input
