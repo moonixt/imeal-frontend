@@ -19,7 +19,7 @@ const Header = () => {
           <Link to="/">Início</Link>
         </li>
         <li>
-          <Link to="/restaurantes">Restaurantes</Link>
+          <Link to="/restaurantes">Produtos</Link>
         </li>
         <li>Mercados</li>
         <li>Pets</li>
