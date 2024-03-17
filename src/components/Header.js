@@ -29,6 +29,11 @@ const Header = () => {
         <p onClick={logoutUser}>Desconectar</p>
       </ul>
     </div>
+<<<<<<< Updated upstream
+=======
+    ///?@ oii sandra aaaazzzxzx, tudo bem 
+  
+>>>>>>> Stashed changes
   );
 };
 
