@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import Restaurantes  from './pages/Restaurantes'
 import Celular from "./pages/Celular";
 import LoginPage from "./pages/LoginPage";
+import CadastroProdutos from "./pages/CadastroProdutos";
 import Header from "./components/Header";
 import { AuthProvider } from "./context/AuthContext";
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="/restaurantes" element={<Restaurantes/>}></Route>
             <Route path="/login-celular" element={<Celular/>}></Route>
             <Route path="/login-cadastro" element={<Cadastro/>}></Route>
+            <Route path="/adicionar-produto" element={<CadastroProdutos/>}></Route>
           </Routes>
         </AuthProvider>
       </Router>

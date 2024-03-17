@@ -1,18 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+
 
 const Restaurantes = () => {
+
+  const [produtos, setProdutos] = useState([])
+
+
+  useEffect(() => {
+    const fetchProdutos = async () => {
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/produtos/')
+        setProdutos(response.data)
+      } catch (error) {
+        console.error("Erro ao buscar produtos:", error);
+      }
+    }
+
+    fetchProdutos()
+  }, [])
+
+
+
+
   return (
     <div>
-      <div className="card card-compact w-40 bg-base-100 shadow-xl">
-  <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-  <div className="card-body">
-    <h className="card-title items-center">Shoes!</h>
-    
-    <div className="card-actions justify-end">
-    </div>
+    {produtos.map((produto) => (
+      <div key={produto.id}>
+        <h2>{produto.nome_produto}</h2>
+        <p>{produto.descricao}</p>
+        {/* Outros detalhes do produto aqui */}
+      </div>
+    ))}
   </div>
-</div>
-    </div>
   )
 }
 
