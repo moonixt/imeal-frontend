@@ -29,9 +29,10 @@ const Header = () => {
         <li>
           <Link to="/login">Entrar</Link>
         </li>
-        <p onClick={logoutUser}>Sair</p>
+        <p onClick={logoutUser}>Sair</p> 
       </ul>
     </div>
+    //
   );
 };
 
