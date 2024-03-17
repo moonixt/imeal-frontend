@@ -24,9 +24,12 @@ const Header = () => {
         <li>Mercados</li>
         <li>Pets</li>
         <li>
+          <Link to="/carrinho">Carrinho</Link>
+        </li>
+        <li>
           <Link to="/login">Entrar</Link>
         </li>
-        <p onClick={logoutUser}>Desconectar</p>
+        <p onClick={logoutUser}>Sair</p>
       </ul>
     </div>
   );

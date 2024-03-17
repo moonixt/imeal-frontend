@@ -48,7 +48,8 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     localStorage.removeItem("authTokens");
     logoutFirebaseGoogle()
-    window.alert('Você foi desconectado                              ')
+    window.alert('Você foi desconectado')
+    history("/login")
    
   };
 
