@@ -1,18 +1,33 @@
 import React from 'react'
 import {useState} from 'react'
+import axios from 'axios'
 
 const Cadastro = () => {
 
   const [nome, setNome] = useState("")
   const [cpf, setCPF] = useState("")
-  const [telefone, setTelefone] = useState("")
+  const [celular, setCelular] = useState("")
   const [email, setEmail] = useState("")
+  const [senha, setSenha] = useState("")
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     
-    // Aqui você pode definir o que acontecerá quando o formulário for enviado
-    console.log(nome, cpf, telefone, email);
+    let formfield = new FormData
+
+    formfield.append('nome', nome)
+    formfield.append('cpf', cpf)
+    formfield.append('celular', celular)
+    formfield.append('email', email)
+    formfield.append('senha', senha)
+
+try {
+    await axios.post('http://localhost:8000/usuarios/', formfield)
+    alert('Conta Registrado')
+} catch (error) {
+    alert('Não foi possível realizar a ação',error);
+}
+    
   }
 
   return (
@@ -45,9 +60,9 @@ const Cadastro = () => {
             type="number"
             className="grow"
             placeholder="Telefone"
-            name="telefone"
-            value={telefone}
-            onChange={(e) => setTelefone(e.target.value)}
+            name="celular"
+            value={celular}
+            onChange={(e) => setCelular(e.target.value)}
           />
         </label>
 
@@ -68,6 +83,18 @@ const Cadastro = () => {
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+
+        <label className="input input-bordered flex items-center gap-2 mb-4">
+          
+          <input
+            type="password"
+            className="grow"
+            placeholder="Senha"
+            name="senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
           />
         </label>
         <input
