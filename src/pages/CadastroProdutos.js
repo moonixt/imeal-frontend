@@ -9,6 +9,8 @@ const CadastroProdutos = () => {
   const [valor, setValor] = useState("")
   const [qtd_estoque, setQtd_estoque] = useState("")
   const [descricao, setDescricao] = useState("")
+  const [categoria, setCategoria] = useState("")
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,6 +20,7 @@ const CadastroProdutos = () => {
     formfield.append('valor', valor)
     formfield.append('qtd_estoque', qtd_estoque)
     formfield.append('descricao', descricao)
+    formfield.append('categoria', categoria)
 
 try {
     await axios.post('http://127.0.0.1:8000/produtos/', formfield)
@@ -76,6 +79,17 @@ try {
             name="descricao"
             value={descricao}
             onChange={(e) => setDescricao(e.target.value)}
+          />
+        </label>
+
+        <label className="input input-bordered flex items-center gap-2 mb-4">
+          <input
+            type="text"
+            className="grow"
+            placeholder="categoria"
+            name="categoria"
+            value={categoria}
+            onChange={(e) => setCategoria(e.target.value)}
           />
         </label>
         <input
