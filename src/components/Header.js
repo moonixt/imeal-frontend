@@ -22,7 +22,6 @@ const Header = () => {
           <Link to="/restaurantes">Produtos</Link>
         </li>
         <li>Mercados</li>
-        <li>Pets</li>
         <li>
           <Link to="/carrinho">Carrinho</Link>
         </li>

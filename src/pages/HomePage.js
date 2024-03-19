@@ -28,24 +28,7 @@ const HomePage = () => {
     </div>
 
     <div>
-    <div className='flex justify-center pt-10 '>
-<button className="m-2 rounded bg-cyan-950 px-4 py-2 text-white">Frios</button>
-<button className="m-2 rounded bg-cyan-950 px-4 py-2 text-white">Doces</button>
-<button className="m-2 rounded bg-cyan-950 px-4 py-2 text-white">Carnes</button>
-<button className="m-2 rounded bg-cyan-950 px-4 py-2 text-white">Cervejas</button>
-<button className="m-2 rounded bg-cyan-950 px-4 py-2 text-white">Congelados</button>
-<button className="m-2 rounded bg-cyan-950 px-4 py-2 text-white">Massas frescas</button>
-</div>
-
-<div className='flex justify-center pb-10 '>
-  <button className="m-2 rounded bg-cyan-950 px-4 py-2 text-white">Padaria</button>
-  <button className="m-2 rounded bg-cyan-950 px-4 py-2 text-white">Higiene</button>
-  <button className="m-2 rounded bg-cyan-950 px-4 py-2 text-white">Feira</button>
-  <button className="m-2 rounded bg-cyan-950 px-4 py-2 text-white">Bebidas</button>
-  <button className="m-2 rounded bg-cyan-950 px-4 py-2 text-white">Laticínios</button>
-
-
-  </div>
+ 
     </div>
 
     <div class="flex gap-8">

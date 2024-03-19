@@ -5,6 +5,7 @@ import {useState} from 'react'
 
 const CadastroProdutos = () => {
 
+  const [image, setImage] = useState(null)
   const [nome_produto, setNomeProduto] = useState("")
   const [valor, setValor] = useState("")
   const [qtd_estoque, setQtd_estoque] = useState("")
@@ -21,6 +22,9 @@ const CadastroProdutos = () => {
     formfield.append('qtd_estoque', qtd_estoque)
     formfield.append('descricao', descricao)
     formfield.append('categoria', categoria)
+    if(image !== null) {
+      formfield.append('image',image)
+    }
 
 try {
     await axios.post('http://127.0.0.1:8000/produtos/', formfield)
@@ -37,6 +41,20 @@ try {
   return (
     <div>
       <form className='form-group' onSubmit={handleSubmit} >
+
+      <label className="input input-bordered flex items-center gap-2 mb-4">
+          <img src={image}/>
+          <input
+            type="file"
+            className="grow"
+            name="image"
+            onChange={(e) => setImage(e.target.files[0])}
+          />
+        </label>
+
+
+
+
         <label className="input input-bordered flex items-center gap-2 mb-4">
           <input
             type="text"
