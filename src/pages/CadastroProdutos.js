@@ -15,26 +15,60 @@ const CadastroProdutos = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    let formfield = new FormData
-
-    formfield.append('nome_produto', nome_produto)
-    formfield.append('valor', valor)
-    formfield.append('qtd_estoque', qtd_estoque)
-    formfield.append('descricao', descricao)
-    formfield.append('categoria', categoria)
-    if(image !== null) {
-      formfield.append('image',image)
+    let formfield = new FormData();
+  
+    if (nome_produto === "") {
+      alert('Adicione um nome ao produto');
+      return;
+    } else {
+      formfield.append('nome_produto', nome_produto);
     }
-
-try {
-    await axios.post('http://127.0.0.1:8000/produtos/', formfield)
-    alert('Produto Registrado')
-} catch (error) {
-    alert('Preencha os campos obrigatórios',error);
-}
-    
+  
+    if (valor === "") {
+      alert('Adicione um valor ao produto');
+      return;
+    } else {
+      formfield.append('valor', valor);
+    }
+  
+    if (qtd_estoque === "") {
+      alert('Adicione uma quantidade ao estoque');
+      return;
+    } else {
+      formfield.append('qtd_estoque', qtd_estoque);
+    }
+  
+    if (descricao === "") {
+      alert('Adicione uma descrição ao produto');
+      return;
+    } else {
+      formfield.append('descricao', descricao);
+    }
+  
+    if (categoria === "") {
+      alert('Adicione uma categoria ao produto');
+      return;
+    } else {
+      formfield.append('categoria', categoria);
+    }
+  
+    if (image == null) {
+      alert('Adicione uma imagem ao produto');
+      return;
+    } else {
+      formfield.append('image', image);
+    }
+  
+    try {
+      await axios.post('http://127.0.0.1:8000/produtos/', formfield);
+      alert('Produto Registrado');
+    } catch (error) {
+      alert('Preencha os campos obrigatórios', error);
+    }
   }
-    
+  
+  
+  
 
   
 

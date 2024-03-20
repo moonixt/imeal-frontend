@@ -19,10 +19,10 @@ const LoginPage = () => {
   return (
     <div className="authentication__wrapper font-bold">
       <div className="authentication__illustration">
-        <img src={Logphoto} width={510} height={510}></img>
+     
       </div>
 
-      <div className="authentication-steps">
+      <div className="justify-center">
         <div>
           <div></div>
         </div>
@@ -32,7 +32,7 @@ const LoginPage = () => {
             Fazer login
           </h1>
           <h2 className="sign-in-onboard__subtitle">Como deseja continuar?</h2>
-          <form onSubmit={loginUser}>
+          <form onSubmit={loginUser} className="space-y-4">
             <label className="input input-bordered flex items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +102,7 @@ const LoginPage = () => {
             </GoogleLoginButton>
           </div>
 
-          <div className="sign-in-onboard__btnContainer">
+          <div className="sign-in-onboard__btnContainer ">
             <button className="m-2 rounded bg-cyan-950 px-4 py-2 text-white">
               <Link to="/login-celular">Celular</Link>
             </button>

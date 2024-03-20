@@ -1,5 +1,6 @@
 import React from 'react'
 import food1 from './CSS/food.jpg'
+import { Link } from 'react-router-dom'
 
 
 const HomePage = () => {
@@ -46,10 +47,10 @@ const HomePage = () => {
   <div class="card w-96 bg-base-100 shadow-xl pt-10 gap-4">
     <figure><img src="https://images.pexels.com/photos/1367243/pexels-photo-1367243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Shoes" /></figure>
     <div class="card-body">
-      <h2 class="card-title font-bold">Mercados</h2>
-      <p>Que tal dar uma olhada em mercados de sua escolha?</p>
+      <h2 class="card-title font-bold">Produtos</h2>
+      <p>Que tal dar uma olhada nos produtos de sua escolha?</p>
       <div class="card-actions justify-end">
-        <button class="m-2 rounded bg-cyan-950 px-4 py-2 text-white">Acesse agora</button>
+        <button class="m-2 rounded bg-cyan-950 px-4 py-2 text-white"><Link to='/produtos'>Acesse agora</Link></button>
       </div>
     </div>
   </div>

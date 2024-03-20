@@ -19,16 +19,37 @@ const Header = () => {
           <Link to="/">Início</Link>
         </li>
         <li>
-          <Link to="/restaurantes">Produtos</Link>
+        <div className="dropdown dropdown-bottom">
+  <div tabIndex={0} role="button" className="m-1">Produtos</div>
+  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+    <li><Link to="/produtos">Ver produtos</Link></li>
+    <li><Link to="/adicionar-produto">Adicionar</Link></li>
+    <li><Link to="/atualizar-produto">Atualizar</Link></li>
+    <li><Link to="/deletar-produto">Deletar</Link></li>
+    
+  </ul>
+</div>
+          
         </li>
-        <li>Mercados</li>
+        <li>Restaurantes</li>
+        <li >
+          <Link  to="/carrinho">Carrinho</Link>
+        </li>
         <li>
-          <Link to="/carrinho">Carrinho</Link>
+        <div className="dropdown dropdown-bottom">
+  <div tabIndex={0} role="button" className="m-1">Conta</div>
+  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+    <li><Link to="/login">Entrar</Link></li>
+    <li><p onClick={logoutUser}>Sair</p> </li>
+ 
+    
+  </ul>
+</div>
         </li>
         <li>
-          <Link to="/login">Entrar</Link>
+          
         </li>
-        <p onClick={logoutUser}>Sair</p> 
+        
       </ul>
     </div>
     ///?@ oii sandra aaaazzzxzx
