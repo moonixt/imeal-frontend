@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
+import { CarrinhoContext } from '../context/CarrinhoContext'
 
 const Produtos = () => {
 
   const [produtos, setProdutos] = useState([])
-  const [carrinho, setCarrinho] = useState([]) // Adiciona estado para o carrinho
+  
 
   useEffect(() => {
     const fetchProdutos = async () => {
@@ -19,10 +20,29 @@ const Produtos = () => {
     fetchProdutos()
   }, [])
 
-  const adicionarAoCarrinho = (produto) => { // Função para adicionar produtos ao carrinho
-    setCarrinho([...carrinho, produto])
-    console.log(produto)
-  }
+  const { carrinho, setCarrinho } = useContext(CarrinhoContext)
+
+  const adicionarAoCarrinho = (produto) => {
+    if (carrinho[produto.id]) {
+      // Se o produto já está no carrinho, incrementa a quantidade
+      setCarrinho({
+        ...carrinho,
+        [produto.id]: {
+          ...carrinho[produto.id],
+          quantidade: carrinho[produto.id].quantidade + 1,
+        },
+      });
+    } else {
+      // Se o produto não está no carrinho, adiciona com quantidade inicial de 1
+      setCarrinho({
+        ...carrinho,
+        [produto.id]: {
+          ...produto,
+          quantidade: 1,
+        },
+      });
+    }
+  };
 
   return (
     <div>
