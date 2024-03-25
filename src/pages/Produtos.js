@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
 import { CarrinhoContext } from '../context/CarrinhoContext'
+import { Link } from 'react-router-dom'
 
 const Produtos = () => {
 
@@ -23,6 +24,8 @@ const Produtos = () => {
   const { carrinho, setCarrinho } = useContext(CarrinhoContext)
 
   const adicionarAoCarrinho = (produto) => {
+
+    
     if (carrinho[produto.id]) {
       // Se o produto já está no carrinho, incrementa a quantidade
       setCarrinho({
@@ -34,13 +37,9 @@ const Produtos = () => {
       });
     } else {
       // Se o produto não está no carrinho, adiciona com quantidade inicial de 1
-      setCarrinho({
-        ...carrinho,
-        [produto.id]: {
-          ...produto,
-          quantidade: 1,
-        },
-      });
+      setCarrinho({ ...carrinho, [produto.id]: {  ...produto,  quantidade: 1,},});
+      
+      
     }
   };
 
@@ -69,13 +68,15 @@ const Produtos = () => {
           <h1 className='text-4xl pb-10 font-bold'>{produto.nome_produto}</h1>
           <img className='pb-4' src={produto.image} alt={produto.nome_produto} />
           <h2 className='text-2xl text-emerald-600 font-bold'> Preço: R$ {produto.valor}</h2>
-          <h2>Quantidade em estoque: {produto.qtd_estoque}</h2>
+          {/* <h2>Quantidade em estoque: {produto.qtd_estoque}</h2> */}
           <p> Descrição: <br /> {produto.descricao}</p>
           <p className='font-bold'>Identidade de restaurante: {produto.restaurante}</p>
           <p className='text-amber-500'>Código do produto: {produto.id}</p>
           
           
-          <button className='m-2 rounded bg-cyan-950 px-10 py-2 text-white' onClick={() => adicionarAoCarrinho(produto)}>Adicionar ao carrinho</button> {/* Botão para adicionar ao carrinho */}
+          <Link to='/carrinho'><button className='m-2 rounded bg-cyan-950 px-10 py-2 text-white' onClick={() => adicionarAoCarrinho(produto)}>Comprar</button></Link> {/* Botão para adicionar ao carrinho */}
+          <button className='m-2 rounded bg-cyan-950 px-10 py-2 text-white' onClick={() => adicionarAoCarrinho(produto, alert('Produto adicionado ao carrinho!'))}>Adicionar ao carrinho</button> {/* Botão para adicionar ao carrinho */}
+
         </div>
       ))}
     </div>

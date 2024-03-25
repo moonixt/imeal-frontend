@@ -39,7 +39,7 @@ const HomePage = () => {
       <h2 class="card-title font-bold">Restaurantes</h2>
       <p>Visite restaurantes deliciosos próximos a você!</p>
       <div class="card-actions justify-end">
-        <button class="m-2 rounded bg-cyan-950 px-4 py-2 text-white">Acesse agora</button>
+        <Link to='/restaurantes'><button class="m-2 rounded bg-cyan-950 px-4 py-2 text-white">Acesse agora</button></Link>
       </div>
     </div>
   </div>

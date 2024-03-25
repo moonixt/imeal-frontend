@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import tit from "../pages/CSS/logo.jpg";
 import AuthContext from "../context/AuthContext";
 import { logoutFirebase } from "../services/firebaseConfig";
+import { BsCart3, BsCartCheckFill, IoPerson   } from "react-icons/bs";
 import styles from "../App.css";
 
 const Header = () => {
@@ -41,12 +42,13 @@ const Header = () => {
     
   </ul>
 </div>
-        <li >
-          <Link  to="/carrinho">Carrinho</Link>
+<li>
+          <Link  to="/carrinho"><BsCartCheckFill  className="text-3xl ml-1	"/></Link>
         </li>
+        
         <li>
         <div className="dropdown dropdown-bottom">
-  <div tabIndex={0} role="button" className="m-1">Conta</div>
+  <div tabIndex={0} role="button" className="">Conta</div>
   <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
     <li><Link to="/login">Entrar</Link></li>
     <li><p onClick={logoutUser}>Sair</p> </li>
@@ -54,7 +56,9 @@ const Header = () => {
     
   </ul>
 </div>
+
         </li>
+        
         <li>
           
         </li>
