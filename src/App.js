@@ -14,6 +14,7 @@ import CadastroRestaurantes from "./pages/CadastroRestaurantes";
 import Restaurantes from "./pages/Restaurantes";
 import { CarrinhoProvider } from "./context/CarrinhoContext";
 import Carrinho from "./pages/Carrinho";
+import DetalhesProduto from "./pages/DetalhesProduto";
 // import RestauranteDetalhes from "./pages/RestauranteDetalhes";
 import { AuthProvider } from "./context/AuthContext";
 
@@ -37,6 +38,9 @@ function App() {
               <Route path="/cadastrar-restaurante" element={<CadastroRestaurantes/>}></Route>
               <Route path="/restaurantes" element={<Restaurantes/>}></Route>
               <Route path="/carrinho" element={<Carrinho/>}></Route>
+              <Route path="/detalhes/:id" element={<DetalhesProduto/>}></Route>
+
+
 
 
               

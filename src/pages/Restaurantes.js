@@ -40,7 +40,7 @@ const Restaurantes = () => {
                 {restaurantes.map((restaurante) => (
                     <div key={restaurante.id} className='pt-10 pb-4 '>
                         <h1 className='text-4xl pb-10 font-bold'>{restaurante.nome_restaurante}</h1>
-                        <img className='pb-4' src={restaurante.image} alt={restaurante.nome_restaurante} />
+                        <Link to={`/detalhes/${restaurante.id}`} ><img className='pb-4' src={restaurante.image} alt={restaurante.nome_restaurante} /></Link>
                         <p className='text-amber-500'>Código do restaurante: {restaurante.id}</p>
                         <p> Descrição: <br /> {restaurante.descricao_restaurante}</p>
                         
