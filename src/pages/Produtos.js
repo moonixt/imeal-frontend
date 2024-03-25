@@ -51,8 +51,8 @@ const Produtos = () => {
           <h2 className='text-2xl text-emerald-600 font-bold'> Preço: R$ {produto.valor}</h2>
           <h2>Quantidade em estoque: {produto.qtd_estoque}</h2>
           <p> Descrição: <br /> {produto.descricao}</p>
-          <p> Categoria:  {produto.categoria}</p>
-          <p>Código: {produto.id}</p>
+          <p className='font-bold'>Identidade de restaurante: {produto.restaurante}</p>
+          <p className='text-amber-500'>Código do produto: {produto.id}</p>
           
           
           <button className='m-2 rounded bg-cyan-950 px-10 py-2 text-white' onClick={() => adicionarAoCarrinho(produto)}>Adicionar ao carrinho</button> {/* Botão para adicionar ao carrinho */}

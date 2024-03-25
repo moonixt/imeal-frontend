@@ -10,7 +10,7 @@ const CadastroProdutos = () => {
   const [valor, setValor] = useState("")
   const [qtd_estoque, setQtd_estoque] = useState("")
   const [descricao, setDescricao] = useState("")
-  const [categoria, setCategoria] = useState("")
+  const [restaurante, setRestaurante] = useState("")
 
 
   const handleSubmit = async (event) => {
@@ -45,11 +45,11 @@ const CadastroProdutos = () => {
       formfield.append('descricao', descricao);
     }
   
-    if (categoria === "") {
+    if (restaurante === "") {
       alert('Adicione uma categoria ao produto');
       return;
     } else {
-      formfield.append('categoria', categoria);
+      formfield.append('restaurante', restaurante);
     }
   
     if (image == null) {
@@ -138,10 +138,10 @@ const CadastroProdutos = () => {
           <input
             type="text"
             className="grow"
-            placeholder="categoria"
-            name="categoria"
-            value={categoria}
-            onChange={(e) => setCategoria(e.target.value)}
+            placeholder="Insira o ID do Restaurante"
+            name="restaurante"
+            value={restaurante}
+            onChange={(e) => setRestaurante(e.target.value)}
           />
         </label>
         <input

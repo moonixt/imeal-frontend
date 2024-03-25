@@ -14,32 +14,34 @@ import Footer from "./components/Footer";
 import AtualizarProduto from "./pages/AtualizarProduto";
 import CadastroRestaurantes from "./pages/CadastroRestaurantes";
 import Restaurantes from "./pages/Restaurantes";
+// import RestauranteDetalhes from "./pages/RestauranteDetalhes";
 import { AuthProvider } from "./context/AuthContext";
+
 
 function App() {
   return (
     <div className="App">
       <Router>
         <AuthProvider>
-          <Header />
-          
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/produtos" element={<Produto/>}></Route>
-            <Route path="/login-celular" element={<Celular/>}></Route>
-            <Route path="/login-cadastro" element={<Cadastro/>}></Route>
-            <Route path="/adicionar-produto" element={<CadastroProdutos/>}></Route>
-            <Route path="/carrinho" element={<Carrinho/>}></Route>
-            <Route path="/deletar-produto" element={<DeletarProduto/>}></Route>
-            <Route path="/atualizar-produto" element={<AtualizarProduto/>}></Route>
-            <Route path="/cadastrar-restaurante" element={<CadastroRestaurantes/>}></Route>
-            <Route path="/restaurantes" element={<Restaurantes/>}></Route>
-            
+            <Header />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/produtos" element={<Produto/>}></Route>
+              <Route path="/carrinho" element={<Carrinho/>}></Route>
+              <Route path="/login-celular" element={<Celular/>}></Route>
+              <Route path="/login-cadastro" element={<Cadastro/>}></Route>
+              <Route path="/adicionar-produto" element={<CadastroProdutos/>}></Route>
+              <Route path="/deletar-produto" element={<DeletarProduto/>}></Route>
+              <Route path="/atualizar-produto" element={<AtualizarProduto/>}></Route>
+              <Route path="/cadastrar-restaurante" element={<CadastroRestaurantes/>}></Route>
+              <Route path="/restaurantes" element={<Restaurantes/>}></Route>
 
+              
+            {/* <Route path="/restaurante/:id/produtos" element={<RestauranteDetalhes/>}></Route> */}
 
-          </Routes>
-          <Footer/>
+            </Routes>
+            <Footer/>
         </AuthProvider>
       </Router>
     </div>

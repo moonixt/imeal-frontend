@@ -16,6 +16,7 @@ const CadastroRestaurantes = () => {
   const [uf_restaurante, setUf_restaurante] = useState("")
   const [cep_restaurante, setCep_restaurante] = useState("")
   const [descricao_restaurante, setDescricao_restaurante] =useState("")
+  const [categoria_restaurante, setCategoria_restaurante] =useState("")
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -76,6 +77,14 @@ const CadastroRestaurantes = () => {
       } else {
         formfield.append('descricao_restaurante', descricao_restaurante);
       }
+
+      if (categoria_restaurante === "") {
+        alert('Adicione uma descrição ao restaurante');
+        return;
+      } else {
+        formfield.append('categoria_restaurante', categoria_restaurante);
+      }
+
   
     if (image == null) {
       alert('Adicione uma imagem ao restaurante');
@@ -140,7 +149,7 @@ const CadastroRestaurantes = () => {
           <input
             type="number"
             className="grow"
-            placeholder="Inira o numero do restaurante"
+            placeholder="Insira o numero do restaurante"
             name="numero"
             value={numero_restaurante}
             onChange={(e) => setNumero_restaurante(e.target.value)}
@@ -221,6 +230,17 @@ const CadastroRestaurantes = () => {
             name="descricao_restaurante"
             value={descricao_restaurante}
             onChange={(e) => setDescricao_restaurante(e.target.value)}
+          />
+        </label>
+
+        <label className="input input-bordered flex items-center gap-2 mb-4">
+          <input
+            type="textfield"
+            className="grow"
+            placeholder="Insira um ID de categoria de seu restaurante"
+            name="descricao_restaurante"
+            value={categoria_restaurante}
+            onChange={(e) => setCategoria_restaurante(e.target.value)}
           />
         </label>
         <input

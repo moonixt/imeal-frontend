@@ -1,11 +1,20 @@
-import React from 'react'
+// import React, { useContext } from 'react'
+// import { CarrinhoContext } from '../context/CarrinhoContext'
 
-const Carrinho = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+// const Carrinho = () => {
+//   const { carrinho } = useContext(CarrinhoContext)
 
-export default Carrinho
+//   return (
+//     <div>
+//       {carrinho.map((item, index) => (
+//         <div key={index}>
+//           <h2>{item.nome_produto}</h2>
+//           <p>{item.valor}</p>
+//         </div>
+//       ))}
+//     </div>
+//   )
+// }
+
+// export default Carrinho
+

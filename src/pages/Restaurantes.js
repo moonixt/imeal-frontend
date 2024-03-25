@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const Restaurantes = () => {
 
@@ -25,7 +26,7 @@ const Restaurantes = () => {
                 <dialog id="my_modal_1" className="modal">
                     <div className="modal-box">
                         <h3 className="font-bold text-lg">Olá internauta!</h3>
-                        <p className="py-4">Esta é a página de restaurantes! Você pode adquirir os seus restaurantes aqui! 🐱</p>
+                        <p className="py-4">Esta é a página de restaurantes! Você pode visualizar os restaurantes aqui! 🐱</p>
                         <div className="modal-action">
                             <form method="dialog">
                                 <button className="">Fechar</button>
@@ -40,7 +41,11 @@ const Restaurantes = () => {
                     <div key={restaurante.id} className='pt-10 pb-4 '>
                         <h1 className='text-4xl pb-10 font-bold'>{restaurante.nome_restaurante}</h1>
                         <img className='pb-4' src={restaurante.image} alt={restaurante.nome_restaurante} />
+                        <p className='text-amber-500'>Código do restaurante: {restaurante.id}</p>
+                        <p> Descrição: <br /> {restaurante.descricao_restaurante}</p>
                         
+
+
                     </div>
                 ))}
             </div>

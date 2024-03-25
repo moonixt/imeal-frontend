@@ -31,7 +31,16 @@ const Header = () => {
 </div>
           
         </li>
-        <li>Restaurantes</li>
+        <div className="dropdown dropdown-bottom">
+  <div tabIndex={0} role="button" className="m-1">Restaurantes</div>
+  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+    <li><Link to="/restaurantes">Ver restaurantes</Link></li>
+    <li><Link to="/cadastrar-restaurante">Adicionar</Link></li>
+    <li><Link to="/atualizar-restaurante">Atualizar</Link></li>
+    <li><Link to="/deletar-restaurante">Deletar</Link></li>
+    
+  </ul>
+</div>
         <li >
           <Link  to="/carrinho">Carrinho</Link>
         </li>
