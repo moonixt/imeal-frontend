@@ -67,12 +67,23 @@ const AtualizarProduto = () => {
         <input
           type="text"
           className="grow"
-          placeholder="Insira o ID"
+          placeholder="Insira o ID do produto que deseja alterar"
           name="id"
           value={id}
           onChange={(e) => setId(e.target.value)}
         />
       </label>
+
+      <label className="input input-bordered flex items-center gap-2 mb-4">
+    <input
+      type="text"
+      className="grow"
+      placeholder="Insira o ID do restaurante que o produto está vinculado"
+      name="restaurante"
+      value={restaurante}
+      onChange={(e) => setRestaurante(e.target.value)}
+    />
+  </label>
 
       
 
@@ -145,16 +156,7 @@ const AtualizarProduto = () => {
     />
   </label>
 
-  <label className="input input-bordered flex items-center gap-2 mb-4">
-    <input
-      type="text"
-      className="grow"
-      placeholder="Insira o ID do restaurante"
-      name="restaurante"
-      value={restaurante}
-      onChange={(e) => setRestaurante(e.target.value)}
-    />
-  </label>
+  
   <input
     className="m-2 rounded bg-cyan-950 px-10 py-2 text-white"
     type="submit"

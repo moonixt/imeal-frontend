@@ -11,7 +11,7 @@ const HomePage = () => {
       <h1>Faça uma compra no IMEAL</h1>
       <p className='subtitle-home'>Entregamos tudo o que precisa na porta da sua casa, de hortifruti a itens de limpeza</p>
 
-    <div className='search'>
+    <div className='search pb-10'>
     <div className='flex w-96 rounded bg-white'>
       <input type='search' name='search'id='search' placeholder='Buscar um Produto' 
       className='w-full border -none bg-transparent px-4 py-1 text-gray-900 outline-none focus:outline-none'

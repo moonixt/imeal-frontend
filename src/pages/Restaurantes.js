@@ -36,13 +36,12 @@ const Restaurantes = () => {
                 </dialog>
             </div>
             
-            <div className='justify-center w-96'>
+            <div className='alinhamento'>
                 {restaurantes.map((restaurante) => (
-                    <div key={restaurante.id} className='pt-10 pb-4 '>
-                        <h1 className='text-4xl pb-10 font-bold'>{restaurante.nome_restaurante}</h1>
-                        <Link to={`/detalhes/${restaurante.id}`} ><img className='pb-4' src={restaurante.image} alt={restaurante.nome_restaurante} /></Link>
+                    <div key={restaurante.id} className='alinhamento-produto'>
+                        <Link to={`/detalhes/${restaurante.id}`} ><img className='pb-4 rounded-3xl' src={restaurante.image} alt={restaurante.nome_restaurante}  style={{ width: '150px', height: '150px' }}/></Link>
+                        <h1 className='font-bold'>{restaurante.nome_restaurante }</h1>
                         <p className='text-amber-500'>Código do restaurante: {restaurante.id}</p>
-                        <p> Descrição: <br /> {restaurante.descricao_restaurante}</p>
                         
 
 

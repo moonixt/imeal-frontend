@@ -47,7 +47,11 @@ const Produtos = () => {
 
   return (
     <div>
-      <div className='pt-10'>
+      <div className='alinhamento font-bold text-5xl pt-10 text-cyan-950 '>
+        <h1>Adquira nossos produtos!</h1>
+      </div>
+
+      <div className='pt-10 alinhamento'>
         {/* Open the modal using document.getElementById('ID').showModal() method */}
 <button className="m-2 rounded bg-cyan-700 px-10 py-2 text-white " onClick={()=>document.getElementById('my_modal_1').showModal()}>Mais informações  &#128049;</button>
 <dialog id="my_modal_1" className="modal">
@@ -63,25 +67,26 @@ const Produtos = () => {
   </div>
 </dialog>
       </div>
-      
+    <div className=''>
     <div className='alinhamento'>
       {produtos.map((produto) => (
         <div key={produto.id} className='alinhamento-produto'>
-          <h1 className='text-4xl pb-10 font-bold'>{produto.nome_produto}</h1>
-          <img className='pb-4' src={produto.image} alt={produto.nome_produto} style={{ width: '250px', height: '250px' }} />
-          <h2 className='text-2xl text-emerald-600 font-bold'> Preço: R$ {produto.valor}</h2>
+          
+          <img className='pb-4 rounded-3xl' src={produto.image} alt={produto.nome_produto} style={{ width: '150px', height: '150px' }} />
+          <h1 className='font-bold'>{produto.nome_produto}</h1>
+          <h2 className='text-emerald-600'> Preço: R$ {produto.valor}</h2>
           {/* <h2>Quantidade em estoque: {produto.qtd_estoque}</h2> */}
           <p>Restaurante: {produto.nome_restaurante}</p>
-          <p> Descrição: <br /> {produto.descricao}</p>
           <p className='font-bold'>Identidade de restaurante: {produto.restaurante}</p>
           <p className='text-amber-500'>Código do produto: {produto.id}</p>
           
           
-          <Link to='/carrinho'><button className='m-2 rounded bg-cyan-950 px-10 py-2 text-white' onClick={() => adicionarAoCarrinho(produto)}>Comprar</button></Link> {/* Botão para adicionar ao carrinho */}
-          <button className='m-2 rounded bg-cyan-950 px-10 py-2 text-white' onClick={() => adicionarAoCarrinho(produto, alert('Produto adicionado ao carrinho!'))}>Adicionar ao carrinho</button> {/* Botão para adicionar ao carrinho */}
+          <Link to='/carrinho'><button className='m-2 rounded bg-cyan-950 px-4 py-2 text-white' onClick={() => adicionarAoCarrinho(produto)}>Comprar</button></Link> {/* Botão para adicionar ao carrinho */}
+          <button className='m-2 rounded bg-cyan-950 px-1 py-2 text-white' onClick={() => adicionarAoCarrinho(produto, alert('Produto adicionado ao carrinho!'))}>Adicionar ao carrinho</button> {/* Botão para adicionar ao carrinho */}
 
         </div>
       ))}
+    </div>
     </div>
     </div>
   )
