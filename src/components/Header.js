@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import tit from "../pages/CSS/logo.jpg";
+import tit from "../pages/CSS/OIG1.k.jpeg";
 import AuthContext from "../context/AuthContext";
 import { logoutFirebase } from "../services/firebaseConfig";
 import { BsCart3, BsCartCheckFill, BsPersonFill } from "react-icons/bs";
