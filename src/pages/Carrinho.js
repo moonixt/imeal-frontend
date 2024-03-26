@@ -39,4 +39,4 @@ const Carrinho = () => {
 );
 };
 
-export default Carrinho;
+export default Carrinho;  

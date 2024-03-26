@@ -4,6 +4,7 @@ import Cadastro from "./pages/Cadastro";
 import HomePage from "./pages/HomePage";
 import Produto  from './pages/Produtos'
 import Celular from "./pages/Celular";
+import Sobre from "./pages/Sobre";
 import LoginPage from "./pages/LoginPage";
 import CadastroProdutos from "./pages/CadastroProdutos";
 import DeletarProduto from "./pages/DeletarProduto";
@@ -39,6 +40,7 @@ function App() {
               <Route path="/restaurantes" element={<Restaurantes/>}></Route>
               <Route path="/carrinho" element={<Carrinho/>}></Route>
               <Route path="/detalhes/:id" element={<DetalhesProduto/>}></Route>
+              <Route path="/sobre" element={<Sobre/>}></Route>
 
 
 

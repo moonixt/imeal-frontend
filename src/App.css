@@ -227,6 +227,21 @@ code {
   padding-top: 20px;
 }
 
+.alinhamento {
+  display: flex;
+  flex-wrap: wrap;
+  
+  
+
+}
+
+.alinhamento-produto {
+  
+  /* define a largura mínima dos itens para que eles não fiquem muito estreitos */
+  max-width: 100%; /* limita a largura máxima dos itens para 30% do contêiner, permitindo 3 itens por linha */
+  margin: 10px; 
+}
+
 
 
 

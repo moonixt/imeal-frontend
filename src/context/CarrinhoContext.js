@@ -4,6 +4,7 @@ export const CarrinhoContext = createContext();
 
 export const CarrinhoProvider = ({ children }) => {
     const [carrinho, setCarrinho] = useState({});
+    
   
     const aumentarQuantidade = (id) => {
       setCarrinho({

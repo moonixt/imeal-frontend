@@ -23,6 +23,8 @@ const Produtos = () => {
 
   const { carrinho, setCarrinho } = useContext(CarrinhoContext)
 
+  console.log(produtos)
+
   const adicionarAoCarrinho = (produto) => {
 
     
@@ -62,11 +64,11 @@ const Produtos = () => {
 </dialog>
       </div>
       
-    <div className='justify-center w-96'>
+    <div className='alinhamento'>
       {produtos.map((produto) => (
-        <div key={produto.id} className='pt-10 pb-4 '>
+        <div key={produto.id} className='alinhamento-produto'>
           <h1 className='text-4xl pb-10 font-bold'>{produto.nome_produto}</h1>
-          <img className='pb-4' src={produto.image} alt={produto.nome_produto} />
+          <img className='pb-4' src={produto.image} alt={produto.nome_produto} style={{ width: '250px', height: '250px' }} />
           <h2 className='text-2xl text-emerald-600 font-bold'> Preço: R$ {produto.valor}</h2>
           {/* <h2>Quantidade em estoque: {produto.qtd_estoque}</h2> */}
           <p>Restaurante: {produto.nome_restaurante}</p>

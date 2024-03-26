@@ -10,6 +10,8 @@ const AtualizarProduto = () => {
   const [qtd_estoque, setQtd_estoque] = useState("")
   const [descricao, setDescricao] = useState("")
   const [categoria, setCategoria] = useState("")
+  const [restaurante, setRestaurante] = useState("")
+
     
     const handleUpdate = async (id) => {
         let formfield = new FormData();
@@ -33,6 +35,13 @@ const AtualizarProduto = () => {
             return;
           } else {
             formfield.append('categoria', categoria);
+          }
+
+          if (restaurante === "") {
+            alert('Insira a nova categoria ao produto');
+            return;
+          } else {
+            formfield.append('restaurante', restaurante);
           }
         formfield.append('image', image);
         
@@ -133,6 +142,17 @@ const AtualizarProduto = () => {
       name="categoria"
       value={categoria}
       onChange={(e) => setCategoria(e.target.value)}
+    />
+  </label>
+
+  <label className="input input-bordered flex items-center gap-2 mb-4">
+    <input
+      type="text"
+      className="grow"
+      placeholder="Insira o ID do restaurante"
+      name="restaurante"
+      value={restaurante}
+      onChange={(e) => setRestaurante(e.target.value)}
     />
   </label>
   <input
