@@ -14,7 +14,8 @@ const DeletarProduto = () => {
   }
 
   return (
-    <div>
+    <div className=''>
+      <div className='flex justify-center'>
       <label className="input input-bordered flex items-center gap-2 mb-4">
         <input
           type="text"
@@ -25,7 +26,10 @@ const DeletarProduto = () => {
           onChange={(e) => setId(e.target.value)}
         />
       </label>
-      <button onClick={handleDelete}>Deletar Produto</button>
+      </div>
+      <div className='flex justify-center pb-10'>
+      <button className='rounded bg-cyan-950 text-white py-2font-bold' onClick={handleDelete}>Deletar Produto</button>
+      </div>
     </div>
   )
 }

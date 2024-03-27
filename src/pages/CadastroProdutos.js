@@ -73,7 +73,7 @@ const CadastroProdutos = () => {
   
 
   return (
-    <div>
+    <div className='flex justify-center'>
       <form className='form-group' onSubmit={handleSubmit} >
 
       <label className="input input-bordered flex items-center gap-2 mb-4">

@@ -21,7 +21,7 @@ const Restaurantes = () => {
 
     return (
         <div>
-            <div className='pt-10'>
+            <div className='pt-10 flex justify-center'>
                 <button className="m-2 rounded bg-cyan-700 px-10 py-2 text-white " onClick={()=>document.getElementById('my_modal_1').showModal()}>Mais informações  🐱</button>
                 <dialog id="my_modal_1" className="modal">
                     <div className="modal-box">
@@ -39,7 +39,7 @@ const Restaurantes = () => {
             <div className='alinhamento'>
                 {restaurantes.map((restaurante) => (
                     <div key={restaurante.id} className='alinhamento-produto'>
-                        <Link to={`/detalhes/${restaurante.id}`} ><img className='pb-4 rounded-3xl' src={restaurante.image} alt={restaurante.nome_restaurante}  style={{ width: '150px', height: '150px' }}/></Link>
+                        <Link to={`/detalhes/${restaurante.id}`} ><img className='pb-4 rounded-3xl' src={restaurante.image} alt={restaurante.nome_restaurante}  style={{ width: '200px', height: '200px' }}/></Link>
                         <h1 className='font-bold'>{restaurante.nome_restaurante }</h1>
                         <p className='text-amber-500'>Código do restaurante: {restaurante.id}</p>
                         

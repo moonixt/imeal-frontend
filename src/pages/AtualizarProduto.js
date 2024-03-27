@@ -60,7 +60,7 @@ const AtualizarProduto = () => {
       }
 
   return (
-    <div>
+    <div className='flex justify-center'>
       <form className='form-group' onSubmit={handleSubmit} >
 
       <label className="input input-bordered flex items-center gap-2 mb-4">
@@ -78,7 +78,7 @@ const AtualizarProduto = () => {
     <input
       type="text"
       className="grow"
-      placeholder="Insira o ID do restaurante que o produto está vinculado"
+      placeholder="ID do restaurante que o produto está"
       name="restaurante"
       value={restaurante}
       onChange={(e) => setRestaurante(e.target.value)}

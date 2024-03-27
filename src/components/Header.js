@@ -6,10 +6,12 @@ import { logoutFirebase } from "../services/firebaseConfig";
 import { BsCart3, BsCartCheckFill, BsPersonFill } from "react-icons/bs";
 import { FaGear } from "react-icons/fa6";
 import styles from "../App.css";
+// import "./cab.css"
 
 const Header = () => {
   let { user, logoutUser } = useContext(AuthContext);
   return (
+    <header>
     <div className="header">
       <ul className="">
         <div className="avatar">
@@ -66,6 +68,7 @@ const Header = () => {
         
       </ul>
     </div>
+    </header>
     ///?@ oii sandra aaaazzzxzx
   );
 };

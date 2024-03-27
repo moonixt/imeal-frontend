@@ -276,3 +276,7 @@ code {
   background-image: url("./pages/CSS/food.jpg");
 
 }
+
+.cardsHome {
+  display: flex;
+}

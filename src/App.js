@@ -18,6 +18,9 @@ import Carrinho from "./pages/Carrinho";
 import DetalhesProduto from "./pages/DetalhesProduto";
 // import RestauranteDetalhes from "./pages/RestauranteDetalhes";
 import { AuthProvider } from "./context/AuthContext";
+import AtualizarRestaurante from "./pages/AtualizarRestaurante";
+import DeletarRestaurante from "./pages/DeletarRestaurante";
+import Pedido from "./pages/Pedido";
 
 
 function App() {
@@ -41,7 +44,9 @@ function App() {
               <Route path="/carrinho" element={<Carrinho/>}></Route>
               <Route path="/detalhes/:id" element={<DetalhesProduto/>}></Route>
               <Route path="/sobre" element={<Sobre/>}></Route>
-
+              <Route path="/atualizar-restaurante" element={<AtualizarRestaurante/>}></Route>
+              <Route path="/deletar-restaurante" element={<DeletarRestaurante/>}></Route>
+              <Route path="/pedido" element={<Pedido/>}></Route>
 
 
 
