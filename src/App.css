@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 body {
-  display: flex;
   justify-content: center;
   align-items: center;
   margin: 0;
@@ -191,6 +190,27 @@ code {
 	list-style: none;
 	margin: 0 25px;
 	
+}
+
+.centro{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.suma{
+  flex-direction: column;
+  align-items: end;
+  align-self: center;
+}
+
+#layout{
+  display: flex;
+  flex-direction: row ;
+  gap:3rem;
+
 }
 
 

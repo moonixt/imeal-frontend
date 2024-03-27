@@ -12,7 +12,7 @@ const Header = () => {
   let { user, logoutUser } = useContext(AuthContext);
   return (
     <header>
-    <div className="header">
+    <div className="header sticky top-0 z-10">
       <ul className="">
         <div className="avatar">
           <div className="w-28 rounded-3xl">

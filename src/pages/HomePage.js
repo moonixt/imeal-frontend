@@ -22,8 +22,6 @@ const HomePage = () => {
       <button className='m-2 rounded bg-cyan-950 px-4 py-2 text-white'>Buscar</button>
 
 
-
-
       </div>
 
       
