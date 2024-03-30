@@ -89,14 +89,14 @@ const LoginPage = () => {
 
         <div className="sign-in-onboard ">
           
-          <span className=".btn .btn__label">
-            {" "}
+          <span className="face">
+            {""}
             <FacebookLoginButton onClick={loginFacebook}>
               Continuar com Facebook
             </FacebookLoginButton>
           </span>
 
-          <div className="google-sign-in">
+          <div className="">
             <GoogleLoginButton onClick={loginGoogle}>
               Fazer login com o Google
             </GoogleLoginButton>

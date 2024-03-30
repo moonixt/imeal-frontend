@@ -68,7 +68,7 @@ const Produtos = () => {
 </dialog>
       </div>
     <div className=''>
-    <div className='alinhamento'>
+    <div className=' alinhamento bg-base-100 shadow-xl pt-10 gap-4'>
       {produtos.map((produto) => (
         <div key={produto.id} className='alinhamento-produto'>
           
