@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import tit from "../pages/CSS/OIG1.k.jpeg";
 import AuthContext from "../context/AuthContext";
 import { logoutFirebase } from "../services/firebaseConfig";
+import { PiMapPinLineLight } from "react-icons/pi";
 import { BsCart3, BsCartCheckFill, BsPersonFill } from "react-icons/bs";
 import { FaGear } from "react-icons/fa6";
 import styles from "../App.css";
@@ -45,7 +46,44 @@ const Header = () => {
     
   </ul>
 </div>
-<li>
+        <li>
+
+          {/* The button to open modal */}
+<label htmlFor="my_modal_7" className=""><PiMapPinLineLight className="text-2xl ml-1	"/></label>
+
+{/* Put this part before </body> tag */}
+<input type="checkbox" id="my_modal_7" className="modal-toggle" />
+<div className="modal text-black" role="dialog">
+  <div className="modal-box">
+    <div className="rounded-5xl pl-30 justify-center flex">
+    <img src={tit} style={{ width: "250px", height: "250px" }} />
+
+    </div>
+    <h1 className="text-lg font-bold justify-center flex pt-10">Onde você quer receber seu pedido?</h1>
+    <div className='search pb-20'>
+    <div className='flex w-96 rounded bg-white'>
+      <input type='search' name='search'id='search' placeholder='Buscar endereço e número' 
+      className='w-full border -none bg-transparent px-4 py-1 text-gray-900 outline-none focus:outline-none'
+     ></input>
+
+      <button className='m-2 rounded bg-cyan-950 px-4 py-2 text-white'>Buscar</button>
+
+
+      </div>
+
+      
+    </div>
+  </div>
+  <label className="modal-backdrop" htmlFor="my_modal_7">Close</label>
+</div>
+
+
+          
+          {/* <Link  to="/map"><PiMapPinLineLight className="text-2xl ml-1	"/></Link> */}
+
+          
+        </li>
+        <li>
           <Link  to="/carrinho"><BsCartCheckFill className="text-2xl ml-1	"/></Link>
         </li>
         

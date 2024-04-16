@@ -47,6 +47,7 @@ code {
   flex-direction: column;
   gap: 1px;
   background-color: black;
+
 }
 
 
@@ -87,6 +88,7 @@ code {
 .face {
 width: 500px;
 justify-content: center;
+border-radius: auto;
 
   
 }

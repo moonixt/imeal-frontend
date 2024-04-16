@@ -21,6 +21,7 @@ import { AuthProvider } from "./context/AuthContext";
 import AtualizarRestaurante from "./pages/AtualizarRestaurante";
 import DeletarRestaurante from "./pages/DeletarRestaurante";
 import Pedido from "./pages/Pedido";
+import StatusPedido from "./pages/StatusPedido";
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
               <Route path="/atualizar-restaurante" element={<AtualizarRestaurante/>}></Route>
               <Route path="/deletar-restaurante" element={<DeletarRestaurante/>}></Route>
               <Route path="/pedido" element={<Pedido/>}></Route>
+              <Route path="/pedido-finalizado" element={<StatusPedido/>}></Route>
 
 
 
