@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import tit from "../pages/CSS/OIG1.k.jpeg";
 import AuthContext from "../context/AuthContext";
@@ -8,8 +8,31 @@ import { BsCart3, BsCartCheckFill, BsPersonFill } from "react-icons/bs";
 import { FaGear } from "react-icons/fa6";
 import styles from "../App.css";
 // import "./cab.css"
+import mapicon from "../pages/CSS/map.jpg";
+
 
 const Header = () => {
+
+  const autoCompleteRef = useRef();
+ const inputRef = useRef();
+ const options = {
+  componentRestrictions: { country: "BR" },
+  fields: ["address_components", "geometry", "icon", "name"],
+  types: ["address"]
+ };
+
+ useEffect(() => {
+  autoCompleteRef.current = new window.google.maps.places.Autocomplete(
+   inputRef.current,
+   options
+  );
+  autoCompleteRef.current.addListener("place_changed", async function () {
+   const place = await autoCompleteRef.current.getPlace();
+   console.log({ place });
+  });
+ }, []);
+
+
   let { user, logoutUser } = useContext(AuthContext);
   return (
     <header>
@@ -56,17 +79,16 @@ const Header = () => {
 <div className="modal text-black" role="dialog">
   <div className="modal-box">
     <div className="rounded-5xl pl-30 justify-center flex">
-    <img src={tit} style={{ width: "250px", height: "250px" }} />
+    <img src={mapicon} style={{ width: "250px", height: "250px" }} />
 
     </div>
-    <h1 className="text-lg font-bold justify-center flex pt-10">Onde você quer receber seu pedido?</h1>
-    <div className='search pb-20'>
-    <div className='flex w-96 rounded bg-white'>
-      <input type='search' name='search'id='search' placeholder='Buscar endereço e número' 
-      className='w-full border -none bg-transparent px-4 py-1 text-gray-900 outline-none focus:outline-none'
+    <h1 className="text-2xl font-bold justify-center flex pt-10">Onde você quer receber seu pedido?</h1>
+    <div className='pb-10 pt-10  '>
+    <div className='flex w-full h-20 rounded bg-white'>
+      <input ref={inputRef} type='search' name='search'id='search' placeholder='Buscar endereço e número' 
+      className='border-slate-950 w-full border -none bg-transparent px-4 py-1 text-gray-900 outline-none focus:outline-none'
      ></input>
 
-      <button className='m-2 rounded bg-cyan-950 px-4 py-2 text-white'>Buscar</button>
 
 
       </div>

@@ -1,10 +1,34 @@
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
 import food1 from './CSS/food.jpg'
 import { Link } from 'react-router-dom'
 import "../index.css"
+import rest from './CSS/rest.jpg'
+import prod from './CSS/prod.jpg'
 
 
 const HomePage = () => {
+
+  const autoCompleteRef = useRef();
+  const inputRef = useRef();
+  const options = {
+   componentRestrictions: { country: "BR" },
+   fields: ["address_components", "geometry", "icon", "name"],
+   types: ["address"]
+  };
+ 
+  useEffect(() => {
+   autoCompleteRef.current = new window.google.maps.places.Autocomplete(
+    inputRef.current,
+    options
+   );
+  }, []);
+
+
+
+
+
+
+
   return (
     <body>
     <section className='font-bold' //className='h-50 bg-gradient-to-r from-cyan-950 to-blue-950 text-white'
@@ -13,9 +37,9 @@ const HomePage = () => {
       <h1>Faça uma compra no IMEAL</h1>
       <p className='subtitle-home'>Entregamos tudo o que precisa na porta da sua casa, de hortifruti a itens de limpeza</p>
 
-    <div className='search pb-10'>
+    <div className='search pt-10 justify-center flex'>
     <div className='flex w-96 rounded bg-white'>
-      <input type='search' name='search'id='search' placeholder='Buscar um Produto' 
+      <input ref={inputRef} type='search' name='search'id='search' placeholder='Buscar um Produto' 
       className='w-full border -none bg-transparent px-4 py-1 text-gray-900 outline-none focus:outline-none'
      ></input>
 
@@ -34,7 +58,7 @@ const HomePage = () => {
 
     <div className="flex justify-center gap-8">
   <div className="card w-96 bg-base-100 shadow-xl pt-10 gap-4">
-    <figure><img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Shoes" /></figure>
+    <figure><img src={rest} alt="Shoes" /></figure>
     <div className="card-body">
       <h2 className="card-title font-bold">Restaurantes</h2>
       <p>Visite restaurantes deliciosos próximos a você!</p>
@@ -45,7 +69,7 @@ const HomePage = () => {
   </div>
 
   <div class="card w-96 bg-base-100 shadow-xl pt-10 gap-4">
-    <figure><img src="https://images.pexels.com/photos/1367243/pexels-photo-1367243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Shoes" /></figure>
+    <figure><img src={prod} alt="Shoes" /></figure>
     <div class="card-body">
       <h2 class="card-title font-bold">Produtos</h2>
       <p>Que tal dar uma olhada nos produtos de sua escolha?</p>
