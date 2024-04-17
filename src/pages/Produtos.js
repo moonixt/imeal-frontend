@@ -3,10 +3,22 @@ import axios from 'axios'
 import { CarrinhoContext } from '../context/CarrinhoContext'
 import { Link } from 'react-router-dom'
 import { BsCartPlusFill } from "react-icons/bs";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y,Mousewheel, Keyboard , EffectFade} from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import im1 from "./CSS/1.jpg"
+import im2 from "./CSS/2.jpg"
+import im3 from "./CSS/3.jpg"
+import im4 from "./CSS/4.jpg"
 
 const Produtos = () => {
 
   const [produtos, setProdutos] = useState([])
+
+  
   
 
   useEffect(() => {
@@ -44,13 +56,51 @@ const Produtos = () => {
       
       
     }
+
+    
+    
   };
+
+  
 
   return (
     <div>
       <div className='alinhamento font-bold text-5xl pt-10 cardselectprod'>
         <h1>Adquira nossos produtos!</h1>
+        
+        
+        
       </div>
+      <div className='pt-10 pr-20'>
+      <Swiper
+      slidesPerView={4}
+    
+   navigation={true}
+   centeredSlides={true}
+
+   pagination={{
+    clickable: true,
+  }}
+  scrollbar={{ draggable: true }}
+
+   mousewheel={true}
+   keyboard={true}
+   modules={[Navigation, Pagination, Mousewheel, Keyboard, Scrollbar]}
+   className="mySwiper"
+  
+  
+>
+  <SwiperSlide><img src={im1} alt="a" style={{ width: '500px', height: '350px' }} /></SwiperSlide>
+  <SwiperSlide><img src={im2} alt="a" style={{ width: '500px', height: '350px' }} /></SwiperSlide>
+  <SwiperSlide><img src={im3} alt="a" style={{ width: '500px', height: '350px' }} /></SwiperSlide>
+  <SwiperSlide><img src={im4} alt="a" style={{ width: '500px', height: '350px' }} /></SwiperSlide>
+  <SwiperSlide><img src={im1} alt="a" style={{ width: '500px', height: '350px' }} /></SwiperSlide>
+  <SwiperSlide><img src={im2} alt="a" style={{ width: '500px', height: '350px' }} /></SwiperSlide>
+</Swiper>
+
+      </div>
+      
+     
 
       <div className='pt-10 alinhamento'>
         {/* Open the modal using document.getElementById('ID').showModal() method */}

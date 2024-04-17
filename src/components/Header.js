@@ -11,6 +11,7 @@ import styles from "../App.css";
 import mapicon from "../pages/CSS/map.jpg";
 import axios from "axios";
 import { PiHouseLineBold } from "react-icons/pi";
+import { BsPersonCircle } from "react-icons/bs";
 
 const Header = () => {
   const [logradouro, setLogradouro] = useState(""); // Novo estado para o endereço
@@ -50,31 +51,28 @@ const Header = () => {
       formfield.append("ponto_ref", ponto_ref);
     }
 
-
-  try {
-    await axios.post('http://127.0.0.1:8000/enderecos/', formfield);
-    alert('Endereco Registrado');
-  } catch (error) {
-    alert('Preencha os campos obrigatórios', error);
-  }
-  
-}
-
-const [ver_endereco,setVer_endereco] = useState([])
-
-useEffect(() => {
-  const fetchEnderecos = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/enderecos/')
-      setVer_endereco(response.data)
+      await axios.post("http://127.0.0.1:8000/enderecos/", formfield);
+      alert("Endereco Registrado");
     } catch (error) {
-      console.error("Erro ao buscar produtos:", error);
+      alert("Preencha os campos obrigatórios", error);
     }
-  }
+  };
 
-  fetchEnderecos()
-}, [])
+  const [ver_endereco, setVer_endereco] = useState([]);
 
+  useEffect(() => {
+    const fetchEnderecos = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:8000/enderecos/");
+        setVer_endereco(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar produtos:", error);
+      }
+    };
+
+    fetchEnderecos();
+  }, []);
 
   const autoCompleteRef = useRef();
   const inputRef = useRef();
@@ -91,10 +89,10 @@ useEffect(() => {
     );
     autoCompleteRef.current.addListener("place_changed", function () {
       const place = autoCompleteRef.current.getPlace();
-      const logradouroObj = place.address_components.find(
-        (component) => component.types.includes("route")
+      const logradouroObj = place.address_components.find((component) =>
+        component.types.includes("route")
       );
-  
+
       if (logradouroObj) {
         setLogradouro(logradouroObj.long_name);
       } else {
@@ -207,7 +205,7 @@ useEffect(() => {
                     {/* coloque o codigo aqui */}
                     <form className="" onSubmit={handleSubmit}>
                       <label className="border-slate-950 input input-bordered flex items-center gap-2 mb-4">
-                      <input
+                        <input
                           ref={inputRef}
                           type="text"
                           className="grow"
@@ -216,7 +214,6 @@ useEffect(() => {
                           value={logradouro}
                           onChange={(e) => setLogradouro(e.target.value)}
                         />
-                        
                       </label>
                       <label className="border-slate-950 input input-bordered flex items-center gap-2 mb-4">
                         <input
@@ -257,23 +254,32 @@ useEffect(() => {
                         value="Salvar endereço"
                       />
                     </form>
-
-                      
                   </div>
                 </div>
                 <div>
                   <h1 className="text-3xl">Favoritos</h1>
                 </div>
-                <div id="Leitura enderecos" className=" text-black font-bold bg-white pt-1 pb-1 ">
-                {ver_endereco.map((endereco) => (
-        <div key={ver_endereco.id} className='alinhamento-endereco cardselectprod'>
-          <p><Link to={'/produtos'}><PiHouseLineBold className="text-2xl ml-1"  />{endereco.logradouro}, { endereco.numero}, {endereco.complemento}, 
-         { endereco.ponto_ref} </Link></p>
-          </div>
-      ))}
-              </div>
+                <div
+                  id="Leitura enderecos"
+                  className=" text-black font-bold bg-white pt-1 pb-1 "
+                >
+                  {ver_endereco.map((endereco) => (
+                    <div
+                      key={ver_endereco.id}
+                      className="alinhamento-endereco cardselectprod"
+                    >
+                      <p>
+                        <Link to={"/produtos"}>
+                          <PiHouseLineBold className="text-2xl ml-1" />
+                          {endereco.logradouro}, {endereco.numero},{" "}
+                          {endereco.complemento},{endereco.ponto_ref}{" "}
+                        </Link>
+                      </p>
+                    </div>
+                  ))}
                 </div>
-        
+              </div>
+
               <label className="modal-backdrop" htmlFor="my_modal_7">
                 Close
               </label>
@@ -290,10 +296,14 @@ useEffect(() => {
           <li>
             <div className="dropdown dropdown-bottom headerselect">
               <div tabIndex={0} role="button">
-                <div className="text-2xl pt-2"> <BsPersonFill /> </div>
-             
-              <div className="">Bem Vindo,<br></br> Faça seu Login ou Cadastro</div>
-              
+                <div className="text-2xl pt-2">
+                  {" "}
+                  <BsPersonCircle />{" "}
+                </div>
+
+                <div className="text-sm">
+                  Bem Vindo,<br></br> Faça seu Login ou Cadastro
+                </div>
               </div>
               <ul
                 tabIndex={0}
