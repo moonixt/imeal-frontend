@@ -8,7 +8,7 @@ const Carrinho = () => {
 
   return (
     <div className="" style={{ width: "50%", margin: "0 auto" }}>
-      <h1 className="text-5xl pb-10">Carrinho de compras</h1>
+      <h1 className="text-5xl pb-10 justify-center flex">Carrinho de compras</h1>
       <div id="layout" className="justify-center">
         <div>
         {Object.values(carrinho).map((produto) => (
@@ -31,13 +31,13 @@ const Carrinho = () => {
             </p>
             <div className="sign-in-onboard__btnContainer ">
               <button
-                className="m-2 rounded bg-cyan-950 px-4 py-2 text-white"
+                className="bcolor px-4 py-2 text-white"
                 onClick={() => diminuirQuantidade(produto.id)}
               >
                 Diminuir quantidade
               </button>
               <button
-                className="m-2 rounded bg-cyan-950 px-4 py-2 text-white"
+                className="bcolor  px-4 py-2 text-white"
                 onClick={() => aumentarQuantidade(produto.id)}
               >
                 Aumentar quantidade
@@ -56,12 +56,12 @@ const Carrinho = () => {
           </div>
           <div className="flex">
             <Link to="/produtos">
-              <button className="m-2 rounded bg-cyan-950 px-4 py-2 text-white">
+              <button className="m-2 bcolor px-4 py-2 text-white">
                 Continuar Comprando
               </button>
             </Link>
             <Link to="/pedido">
-              <button className="m-2 rounded bg-cyan-950 px-4 py-2 text-white">
+              <button className="m-2 bcolor px-4 py-2 text-white">
                 Finalizar Pedido
               </button>
             </Link>

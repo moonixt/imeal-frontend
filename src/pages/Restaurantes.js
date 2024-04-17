@@ -36,9 +36,9 @@ const Restaurantes = () => {
                 </dialog>
             </div>
             
-            <div className='alinhamento'>
+            <div className='alinhamento '>
                 {restaurantes.map((restaurante) => (
-                    <div key={restaurante.id} className='alinhamento-produto'>
+                    <div key={restaurante.id} className='alinhamento-produto cardselectprod'>
                         <Link to={`/detalhes/${restaurante.id}`} ><img className='pb-4 rounded-3xl' src={restaurante.image} alt={restaurante.nome_restaurante}  style={{ width: '200px', height: '200px' }}/></Link>
                         <h1 className='font-bold'>{restaurante.nome_restaurante }</h1>
                         <p className='text-amber-500'>Código do restaurante: {restaurante.id}</p>

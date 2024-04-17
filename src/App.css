@@ -46,7 +46,7 @@ code {
   display: flex;
   flex-direction: column;
   gap: 1px;
-  background-color: black;
+  
 
 }
 
@@ -179,6 +179,95 @@ border-radius: auto;
 	
 }
 
+
+.headeravatarselect {
+  transition: all .20s ease-in-out;
+}
+
+.headeravatarselect:hover{
+  border-radius: 50px;
+  padding: 0px 40px 10px 40px;
+}
+
+.headerselect {
+  transition: all .20s ease-in-out;
+}
+
+.headerselect:hover{
+  border-radius: 50px;
+  padding: 10px 40px 10px 40px;
+  background-color: #242424;
+}
+
+.bcolor{
+  background-color: #242424;
+  border-radius: 50px;
+}
+
+.buttonselect {
+  transition: all .20s ease-in-out;
+}
+
+.buttonselect:hover{
+  border-radius: 50px;
+  padding: 10px 40px 10px 40px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: #242424;
+}
+
+.buttonselectalt {
+  transition: all .20s ease-in-out;
+}
+
+.buttonselectalt:hover{
+  border-radius: 50px;
+  padding: 10px 20px 10px 20px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: #242424;
+}
+
+.cardselect {
+  transition: all .20s ease-in-out;
+}
+
+.cardselect:hover{
+  border-radius: 50px;
+  padding: 10px 40px 10px 40px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.cardselectprod {
+  position: relative;
+  top: 0;
+  transition: all .20s ease-in-out;
+}
+
+.cardselectprod:hover{
+  border-radius: 50px;
+  top: -15px;
+}
+
+.searchselect {
+  position: relative;
+  top: 0;
+  transition: all .20s ease-in-out;
+  border-radius: 50px;
+}
+
+.searchselect:hover{
+  
+  top: -5px;
+}
+
+
+
+
 .centro{
   display: flex;
   flex-direction: column;
@@ -198,12 +287,6 @@ border-radius: auto;
   flex-direction: row ;
   gap:3rem;
 
-}
-
-
-.search {
-
- 
 }
 
 
@@ -280,6 +363,7 @@ border-radius: auto;
   padding-left: 20px;
   padding-top: 20px;
   padding-bottom: 5px;
+  border-radius: 50px;
 }
 
 
@@ -312,4 +396,9 @@ border-radius: auto;
 
 .pac-icon {
   color: #ea1d2c;
+}
+
+.borderw {
+  border: 4px solid black;
+  
 }

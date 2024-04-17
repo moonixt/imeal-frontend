@@ -89,7 +89,7 @@ const CadastroProdutos = () => {
 
 
 
-        <label className="input input-bordered flex items-center gap-2 mb-4">
+        <label className="input borderw flex items-center gap-2 mb-4">
           <input
             type="text"
             className="grow"

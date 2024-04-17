@@ -103,10 +103,10 @@ const LoginPage = () => {
           </div>
 
           <div className="sign-in-onboard__btnContainer ">
-            <button className="m-2 rounded bg-cyan-950 px-4 py-2 text-white">
+            <button className="bcolor px-4 py-2 text-white">
               <Link to="/login-celular">Celular</Link>
             </button>
-            <button className="m-2 rounded bg-cyan-950 px-4 py-2 text-white">
+            <button className="bcolor  px-4 py-2 text-white">
               E-mail
             </button>
           </div>

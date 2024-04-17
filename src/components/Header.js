@@ -106,19 +106,19 @@ useEffect(() => {
   let { user, logoutUser } = useContext(AuthContext);
   return (
     <header>
-      <div className="header sticky top-0 z-10">
+      <div className="header sticky top-0 z-10 ">
         <ul className="">
-          <div className="avatar">
-            <div className="w-28 rounded-3xl">
+          <div className="avatar cardselectprod">
+            <div className="w-28 rounded-3xl ">
               <Link to={"/"}>
                 <img src={tit} />
               </Link>
             </div>
           </div>
-          <li>
+          <li className="headerselect">
             <Link to="/">Início</Link>
           </li>
-          <li>
+          <li className="headerselect">
             <div className="dropdown dropdown-bottom">
               <div tabIndex={0} role="button" className="m-1">
                 Produtos
@@ -151,7 +151,7 @@ useEffect(() => {
               </ul>
             </div>
           </li>
-          <div className="dropdown dropdown-bottom">
+          <div className="dropdown dropdown-bottom headerselect">
             <div tabIndex={0} role="button" className="m-1">
               Restaurantes
             </div>
@@ -183,7 +183,7 @@ useEffect(() => {
               </li>
             </ul>
           </div>
-          <li>
+          <li className="headerselect">
             {/* The button to open modal */}
             <label htmlFor="my_modal_7" className="">
               <PiMapPinLineLight className="text-2xl ml-1	" />
@@ -205,7 +205,7 @@ useEffect(() => {
                 <div className="pb-10 pt-10  ">
                   <div className="pt-10 justify-center">
                     {/* coloque o codigo aqui */}
-                    <form className="form-group " onSubmit={handleSubmit}>
+                    <form className="" onSubmit={handleSubmit}>
                       <label className="border-slate-950 input input-bordered flex items-center gap-2 mb-4">
                       <input
                           ref={inputRef}
@@ -252,7 +252,7 @@ useEffect(() => {
                       </label>
 
                       <input
-                        className="m-2 rounded bg-cyan-950 px-10 py-2 text-white"
+                        className="bcolor buttonselect px-10 py-2 text-white"
                         type="submit"
                         value="Salvar endereço"
                       />
@@ -266,7 +266,7 @@ useEffect(() => {
                 </div>
                 <div id="Leitura enderecos" className=" text-black font-bold bg-white pt-1 pb-1 ">
                 {ver_endereco.map((endereco) => (
-        <div key={ver_endereco.id} className='alinhamento-endereco'>
+        <div key={ver_endereco.id} className='alinhamento-endereco cardselectprod'>
           <p><Link to={'/produtos'}><PiHouseLineBold className="text-2xl ml-1"  />{endereco.logradouro}, { endereco.numero}, {endereco.complemento}, 
          { endereco.ponto_ref} </Link></p>
           </div>
@@ -281,16 +281,19 @@ useEffect(() => {
 
             {/* <Link  to="/map"><PiMapPinLineLight className="text-2xl ml-1	"/></Link> */}
           </li>
-          <li>
+          <li className="headerselect">
             <Link to="/carrinho">
               <BsCartCheckFill className="text-2xl ml-1	" />
             </Link>
           </li>
 
           <li>
-            <div className="dropdown dropdown-bottom">
-              <div tabIndex={0} role="button" className="text-2xl pt-2 ">
-                <BsPersonFill />
+            <div className="dropdown dropdown-bottom headerselect">
+              <div tabIndex={0} role="button">
+                <div className="text-2xl pt-2"> <BsPersonFill /> </div>
+             
+              <div className="">Bem Vindo,<br></br> Faça seu Login ou Cadastro</div>
+              
               </div>
               <ul
                 tabIndex={0}
