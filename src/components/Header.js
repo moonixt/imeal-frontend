@@ -261,16 +261,19 @@ useEffect(() => {
                       
                   </div>
                 </div>
+                <div>
+                  <h1 className="text-3xl">Favoritos</h1>
+                </div>
+                <div id="Leitura enderecos" className=" text-black font-bold bg-white pt-1 pb-1 ">
                 {ver_endereco.map((endereco) => (
-        <div key={ver_endereco.id} className='alinhamento-produto'>
-          <p><PiHouseLineBold className="text-2xl ml-1" /> {endereco.logradouro}, { endereco.numero}, {endereco.complemento}, 
-         { endereco.ponto_ref} </p>
-          
-
-
-        </div>
+        <div key={ver_endereco.id} className='alinhamento-endereco'>
+          <p><Link to={'/produtos'}><PiHouseLineBold className="text-2xl ml-1"  />{endereco.logradouro}, { endereco.numero}, {endereco.complemento}, 
+         { endereco.ponto_ref} </Link></p>
+          </div>
       ))}
               </div>
+                </div>
+        
               <label className="modal-backdrop" htmlFor="my_modal_7">
                 Close
               </label>

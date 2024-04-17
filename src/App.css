@@ -272,6 +272,17 @@ border-radius: auto;
   margin: 50px; 
 }
 
+.alinhamento-endereco {
+  /* define a largura mínima dos itens para que eles não fiquem muito estreitos */
+  max-width: 100%; /* limita a largura máxima dos itens para 30% do contêiner, permitindo 3 itens por linha */
+  margin: 25px;
+  border: 3px solid black; /* adiciona uma borda preta de 1px */
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 5px;
+}
+
+
 
 
 
