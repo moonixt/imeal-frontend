@@ -13,6 +13,8 @@ import im1 from "./CSS/1.jpg"
 import im2 from "./CSS/2.jpg"
 import im3 from "./CSS/3.jpg"
 import im4 from "./CSS/4.jpg"
+import im5 from "./CSS/5.jpg"
+import im6 from "./CSS/6.jpg"
 
 const Produtos = () => {
 
@@ -74,6 +76,7 @@ const Produtos = () => {
       <div className='pt-10 pr-20'>
       <Swiper
       slidesPerView={4}
+      spaceBetween={50}
     
    navigation={true}
    centeredSlides={true}
@@ -90,12 +93,14 @@ const Produtos = () => {
   
   
 >
-  <SwiperSlide><img src={im1} alt="a" style={{ width: '500px', height: '350px' }} /></SwiperSlide>
-  <SwiperSlide><img src={im2} alt="a" style={{ width: '500px', height: '350px' }} /></SwiperSlide>
-  <SwiperSlide><img src={im3} alt="a" style={{ width: '500px', height: '350px' }} /></SwiperSlide>
-  <SwiperSlide><img src={im4} alt="a" style={{ width: '500px', height: '350px' }} /></SwiperSlide>
-  <SwiperSlide><img src={im1} alt="a" style={{ width: '500px', height: '350px' }} /></SwiperSlide>
-  <SwiperSlide><img src={im2} alt="a" style={{ width: '500px', height: '350px' }} /></SwiperSlide>
+  <SwiperSlide><img src={im1} alt="a" style={{ width: '600px', height: '300px' }} /></SwiperSlide>
+  <SwiperSlide><img src={im2} alt="a" style={{width: '600px', height: '300px'  }} /></SwiperSlide>
+  <SwiperSlide><img src={im3} alt="a" style={{width: '600px', height: '300px' }} /></SwiperSlide>
+  <SwiperSlide><img src={im4} alt="a" style={{width: '600px', height: '300px'  }} /></SwiperSlide>
+  <SwiperSlide><img src={im5} alt="a" style={{width: '600px', height: '300px'  }} /></SwiperSlide>
+  <SwiperSlide><img src={im6} alt="a" style={{width: '600px', height: '300px'  }} /></SwiperSlide>
+
+
 </Swiper>
 
       </div>
