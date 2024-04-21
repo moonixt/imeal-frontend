@@ -27,9 +27,9 @@ const [produtos, setProdutos] = useState([])
   return (
     <div>
          {produtos.map((produto) => (
-        <div key={produto.id} className='pt-10 pb-4 w-96 '>
+        <div key={produto.id} className='alinhamento-produto cardselectprod bg-base-100 shadow-xl pt-10 gap-4'>
           <h1 className='text-4xl pb-10 font-bold'>{produto.nome_produto}</h1>
-          <img className='pb-4' src={`http://127.0.0.1:8000/${produto.image}`} alt={produto.nome_produto} />
+          <img className='pb-4' src={`http://127.0.0.1:8000/${produto.image}`} alt={produto.nome_produto} style={{width: '190px', height: '150px',}} />
 
           <h2 className='text-2xl text-emerald-600 font-bold'> Preço: R$ {produto.valor}</h2>
           {/* <h2>Quantidade em estoque: {produto.qtd_estoque}</h2> */}

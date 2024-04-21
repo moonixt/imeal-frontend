@@ -67,11 +67,9 @@ const Produtos = () => {
 
   return (
     <div>
-      <div className='alinhamento font-bold text-5xl pt-10 cardselectprod'>
+      <div className='alinhamento font-bold text-6xl pt-10 cardselectprod'>
         <h1>Adquira nossos produtos!</h1>
-        
-        
-        
+           
       </div>
       <div className='pt-10 pr-20'>
       <Swiper
@@ -93,12 +91,12 @@ const Produtos = () => {
   
   
 >
-  <SwiperSlide><img src={im1} alt="a" style={{ width: '600px', height: '300px' }} /></SwiperSlide>
-  <SwiperSlide><img src={im2} alt="a" style={{width: '600px', height: '300px'  }} /></SwiperSlide>
-  <SwiperSlide><img src={im3} alt="a" style={{width: '600px', height: '300px' }} /></SwiperSlide>
-  <SwiperSlide><img src={im4} alt="a" style={{width: '600px', height: '300px'  }} /></SwiperSlide>
-  <SwiperSlide><img src={im5} alt="a" style={{width: '600px', height: '300px'  }} /></SwiperSlide>
-  <SwiperSlide><img src={im6} alt="a" style={{width: '600px', height: '300px'  }} /></SwiperSlide>
+  <SwiperSlide><img src={im1} alt="a" style={{ width: '400px', height: '400px', borderRadius:'30px', border:'solid'}} /></SwiperSlide>
+  <SwiperSlide><img src={im2} alt="a" style={{width: '400px', height: '400px' , borderRadius:'30px',border:'solid' }} /></SwiperSlide>
+  <SwiperSlide><img src={im3} alt="a" style={{width: '400px', height: '400px', borderRadius:'30px',border:'solid' }} /></SwiperSlide>
+  <SwiperSlide><img src={im4} alt="a" style={{width: '400px', height: '400px' , borderRadius:'30px',border:'solid' }} /></SwiperSlide>
+  <SwiperSlide><img src={im5} alt="a" style={{width: '400px', height: '400px' , borderRadius:'30px',border:'solid' }} /></SwiperSlide>
+  <SwiperSlide><img src={im6} alt="a" style={{width: '400px', height: '400px' , borderRadius:'30px',border:'solid' }} /></SwiperSlide>
 
 
 </Swiper>
@@ -128,7 +126,7 @@ const Produtos = () => {
       {produtos.map((produto) => (
         <div key={produto.id} className='alinhamento-produto cardselectprod'>
           
-          <img className='pb-4 rounded-3xl ' src={produto.image} alt={produto.nome_produto} style={{ width: '150px', height: '150px' }} />
+          <img className='pb-2 rounded-2xl ' src={produto.image} alt={produto.nome_produto} style={{paddingLeft:'20px',paddingTop: '20px', width: '190px', height: '150px',}} />
           <h1 className='font-bold'>{produto.nome_produto}</h1>
           <h2 className='text-emerald-600'> Preço: R$ {produto.valor}</h2>
           {/* <h2>Quantidade em estoque: {produto.qtd_estoque}</h2> */}

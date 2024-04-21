@@ -8,20 +8,20 @@ import prod from './CSS/prod.jpg'
 
 const HomePage = () => {
 
-  const autoCompleteRef = useRef();
-  const inputRef = useRef();
-  const options = {
-   componentRestrictions: { country: "BR" },
-   fields: ["address_components", "geometry", "icon", "name"],
-   types: ["address"]
-  };
+  // const autoCompleteRef = useRef();
+  // const inputRef = useRef();
+  // const options = {
+  //  componentRestrictions: { country: "BR" },
+  //  fields: ["address_components", "geometry", "icon", "name"],
+  //  types: ["address"]
+  // };
  
-  useEffect(() => {
-   autoCompleteRef.current = new window.google.maps.places.Autocomplete(
-    inputRef.current,
-    options
-   );
-  }, []);
+  // useEffect(() => {
+  //  autoCompleteRef.current = new window.google.maps.places.Autocomplete(
+  //   inputRef.current,
+  //   options
+  //  );
+  // }, []);
 
 
 
@@ -40,7 +40,7 @@ const HomePage = () => {
       </div>
     <div className='search pt-10 justify-center flex'>
     <div className='flex w-96 rounded bg-white'>
-      <input ref={inputRef} type='search' name='search'id='search' placeholder='Buscar um Produto' 
+      <input  type='search' name='search'id='search' placeholder='Buscar um Produto' 
       className='w-full border searchselect -none bg-transparent px-4 py-1 text-gray-900 outline-none focus:outline-none'
      ></input>
 
