@@ -1,10 +1,15 @@
-import React, {createContext, useState} from 'react'
+import React, {createContext, useState, useEffect} from 'react'
 
 export const CarrinhoContext = createContext();  
 
 export const CarrinhoProvider = ({ children }) => {
     const [carrinho, setCarrinho] = useState({});
-    
+    const [total, setTotal] = useState(0); // Adicione esta linha
+
+    useEffect(() => {
+      const novoTotal = Object.values(carrinho).reduce((total, produto) => total + produto.valor * produto.quantidade, 0);
+      setTotal(novoTotal);
+    }, [carrinho]); // Adicione este bloco
   
     const aumentarQuantidade = (id) => {
       setCarrinho({
@@ -31,14 +36,10 @@ export const CarrinhoProvider = ({ children }) => {
       }
     };
 
-    const calcularTotal = () => {
-        return Object.values(carrinho).reduce((total, produto) => total + produto.valor * produto.quantidade, 0);
-      };
-  
+   
     return (
-      <CarrinhoContext.Provider value={{ carrinho, setCarrinho, aumentarQuantidade, diminuirQuantidade, calcularTotal }}>
+      <CarrinhoContext.Provider value={{ carrinho, setCarrinho, aumentarQuantidade, diminuirQuantidade, total }}>
         {children}
       </CarrinhoContext.Provider>
     );
   };
-  

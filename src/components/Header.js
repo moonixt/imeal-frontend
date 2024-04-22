@@ -14,9 +14,17 @@ import { PiHouseLineBold } from "react-icons/pi"; // Importação de icone
 import { BsPersonCircle } from "react-icons/bs"; //importação de icone de usuario na barra de navegação
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import MapStyle from "../MapStyle"
+import { BsPencil } from "react-icons/bs";
 
 
 
+
+const libraries = ["places"];
+const loadScriptOptions ={
+  googleMapsApiKey: "AIzaSyA60Y3t48fnyE4J_JlW_JOgBV-uaLMaaJA",
+  libraries,
+
+}
 
 const Header = () => {
 
@@ -29,9 +37,7 @@ const Header = () => {
 
 
 
-
-
-  const handleSubmit = async (event) => { // Inicio de Função assincrona de salvar endereço postando na rota
+const handleSubmit = async (event) => { // Inicio de Função assincrona de salvar endereço postando na rota
     event.preventDefault();
     let formfield = new FormData();
 
@@ -86,12 +92,13 @@ const Header = () => {
     fetchEnderecos();
   }, []); //final de função de uso de efeito 
 
+ 
 
  // IMPLEMENTAÇÃO MAPS
 
- const libraries = ["places"];
+
 const mapContainerStyle = {
-  width: "22vw",
+  
   height: "40vh",
 };
 const center = {
@@ -112,10 +119,9 @@ const configmap = {
    types: ["address"],
  };
 
- const { isLoaded, loadError } = useLoadScript({
-   googleMapsApiKey: "AIzaSyA60Y3t48fnyE4J_JlW_JOgBV-uaLMaaJA",
-   libraries,
- });
+ const { isLoaded, loadError } = useLoadScript(loadScriptOptions);
+
+
 
  useEffect(() => {
    if (isLoaded) {
@@ -137,8 +143,16 @@ const configmap = {
    }
  }, [isLoaded]);
 
+ const [markers,setMarkers] = useState([]);
+
  if (loadError) return "Erro ao carregar mapa";
  if (!isLoaded) return "Carregando mapa";
+
+ function refreshPage(){ 
+  setTimeout(()=>{
+    window.location.reload(false);
+}, 500); 
+}
 
 
   
@@ -247,7 +261,23 @@ const configmap = {
         mapContainerStyle={mapContainerStyle}
         zoom={10}
         center={center}
-        options={configmap} ></GoogleMap>
+        options={configmap}
+        onClick={(event) =>{
+          setMarkers(current => [...current,{
+            lat: event.latLng.lat(),
+            lng: event.latLng.lat(),
+            time: new Date()
+
+          }])
+        }} >
+          <Marker position={center}></Marker>
+          {/* {markers.map((marker) => (
+             <Marker key={marker.time.toISOString()} position={{lat: marker.lat, lng: marker.lng}}
+              />
+              ))} */}
+              
+             
+        </GoogleMap>
                 </div>
                 <div className="pb-10 pt-10  ">
                   <div className="pt-10 justify-center">
@@ -306,7 +336,10 @@ const configmap = {
                   </div>
                 </div>
                 <div>
-                  <h1 className="text-3xl">Favoritos</h1>
+                  <h1 className="text-3xl flex">Favoritos <Link className="pl-3" to={"/deletar-endereco"} onClick={ refreshPage }><BsPencil /></Link></h1>
+                  
+
+                  
                 </div>
                 <div
                   id="Leitura enderecos"
@@ -322,11 +355,17 @@ const configmap = {
                           <PiHouseLineBold className="text-2xl ml-1" />
                           {endereco.logradouro}, {endereco.numero},{" "}
                           {endereco.complemento},{endereco.ponto_ref}{" "}
+                          <p className='text-amber-500 pl-2'>Endereço: {endereco.id}</p>
+                          
                         </Link>
+                        
                       </p>
+                    
                     </div>
+                  
                   ))}
                 </div>
+                <div></div>
               </div>
 
               <label className="modal-backdrop" htmlFor="my_modal_7">

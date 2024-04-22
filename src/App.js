@@ -22,6 +22,7 @@ import AtualizarRestaurante from "./pages/AtualizarRestaurante";
 import DeletarRestaurante from "./pages/DeletarRestaurante";
 import Pedido from "./pages/Pedido";
 import StatusPedido from "./pages/StatusPedido";
+import DeletarEndereco from "./pages/DeletarEndereco";
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
               <Route path="/deletar-restaurante" element={<DeletarRestaurante/>}></Route>
               <Route path="/pedido" element={<Pedido/>}></Route>
               <Route path="/pedido-finalizado" element={<StatusPedido/>}></Route>
+              <Route path="/deletar-endereco" element={<DeletarEndereco/>}></Route>
 
 
 

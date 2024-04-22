@@ -3,9 +3,10 @@ import { CarrinhoContext } from "../context/CarrinhoContext";
 import { Link } from "react-router-dom";
 
 const Carrinho = () => {
-  const { carrinho, aumentarQuantidade, diminuirQuantidade, calcularTotal } =
+  const { carrinho, aumentarQuantidade, diminuirQuantidade, total } =
     useContext(CarrinhoContext);
 
+  
   return (
     <div className="" style={{ width: "50%", margin: "0 auto" }}>
       <h1 className="text-5xl pb-10 justify-center flex">Carrinho de compras</h1>
@@ -51,7 +52,7 @@ const Carrinho = () => {
           <div>
             <h1 className="pt-10 font-bold text-2xl">Sumario: </h1>
             <h2 className="text-emerald-600 text-3xl pb-10 ">
-              Total: R$ {calcularTotal()}
+              Total: R$ {total}
             </h2>
           </div>
           <div className="flex">
