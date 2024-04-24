@@ -91,12 +91,12 @@ const Produtos = () => {
   
   
 >
-  <SwiperSlide><img src={im1} alt="a" style={{ width: '400px', height: '400px', borderRadius:'30px', border:'solid'}} /></SwiperSlide>
-  <SwiperSlide><img src={im2} alt="a" style={{width: '400px', height: '400px' , borderRadius:'30px',border:'solid' }} /></SwiperSlide>
-  <SwiperSlide><img src={im3} alt="a" style={{width: '400px', height: '400px', borderRadius:'30px',border:'solid' }} /></SwiperSlide>
-  <SwiperSlide><img src={im4} alt="a" style={{width: '400px', height: '400px' , borderRadius:'30px',border:'solid' }} /></SwiperSlide>
-  <SwiperSlide><img src={im5} alt="a" style={{width: '400px', height: '400px' , borderRadius:'30px',border:'solid' }} /></SwiperSlide>
-  <SwiperSlide><img src={im6} alt="a" style={{width: '400px', height: '400px' , borderRadius:'30px',border:'solid' }} /></SwiperSlide>
+ <SwiperSlide><Link to='/detalhes/4'> <img src={im1} alt="a" style={{ width: '400px', height: '400px', borderRadius:'30px', border:'solid'}} /></Link></SwiperSlide>
+  <SwiperSlide><Link to='/detalhes/10'><img src={im2} alt="a" style={{width: '400px', height: '400px' , borderRadius:'30px',border:'solid' }} /></Link></SwiperSlide>
+  <SwiperSlide><Link to='/detalhes/15'><img src={im3} alt="a" style={{width: '400px', height: '400px', borderRadius:'30px',border:'solid' }} /></Link></SwiperSlide>
+  <SwiperSlide><Link to='/detalhes/13'><img src={im4} alt="a" style={{width: '400px', height: '400px' , borderRadius:'30px',border:'solid' }} /></Link></SwiperSlide>
+  <SwiperSlide><Link to='/detalhes/7'><img src={im5} alt="a" style={{width: '400px', height: '400px' , borderRadius:'30px',border:'solid' }} /></Link></SwiperSlide>
+  <SwiperSlide><Link to='/detalhes/14'><img src={im6} alt="a" style={{width: '400px', height: '400px' , borderRadius:'30px',border:'solid' }} /></Link></SwiperSlide>
 
 
 </Swiper>

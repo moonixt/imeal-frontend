@@ -1,14 +1,69 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, } from "react";
 import { CarrinhoContext } from "../context/CarrinhoContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import notificationsound from './CSS/notification_sound.mp3'
+import awaitcat from './CSS/awaiting.gif'
 
 const Carrinho = () => {
   const { carrinho, aumentarQuantidade, diminuirQuantidade, total } =
     useContext(CarrinhoContext);
 
+const [AddQuantidade, setAddQuantidade] = useState(false);
+const addquantidade = () => {
+  setAddQuantidade(true);
+  setTimeout(() => {
+    setAddQuantidade(false);
+  }, 1000);
+
+}
+
+const [DdQuantidade, setDdQuantidade] = useState(false);
+const redquantidade = () => {
+  setDdQuantidade(true);
+  setTimeout(() => {
+    setDdQuantidade(false);
+  }, 1000);
+}
+
+const [pedidoConfirmado, setPedidoConfirmado] = useState(false);
+const redirecionar = useNavigate();
+const audio = new Audio(notificationsound)
+const finalizarPedido = () => {
+  setPedidoConfirmado(true);
+  audio.play()
+  setTimeout(() => {
+    redirecionar('/pedido');
+  }, 1800);
+}
+
+
   
   return (
-    <div className="" style={{ width: "50%", margin: "0 auto" }}>
+    <div>
+    {pedidoConfirmado && (
+      <div className="" style={{ width: "50%", margin: "0 auto" }}>
+        <div role="alert" className="alert alert-success">
+          <svg xmlns="http://www.w3.org/2000/svg" className="loading loading-dots loading-xs stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span className="">Confirmando seu pedido! &#10084;</span>
+        </div>
+      </div>
+    )}
+    <div>
+      {AddQuantidade && (
+        <div role="alert" className="alert alert-info" style={{ width: "50%", margin: "0 auto" }}>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-current shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span>Aumentou quantidade.</span>
+      </div>
+      )}
+      <div>
+      {DdQuantidade && (
+        <div role="alert" className="alert alert-error" style={{ width: "50%", margin: "0 auto" }}>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-current shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span>Reduziu quantidade.</span>
+      </div>
+      )}
+      </div>
+    </div>
       <h1 className="text-5xl pb-10 justify-center flex">Carrinho de compras</h1>
       <div id="layout" className="justify-center">
         <div>
@@ -33,13 +88,15 @@ const Carrinho = () => {
             <div className="sign-in-onboard__btnContainer ">
               <button
                 className="bcolor px-4 py-2 text-white"
-                onClick={() => diminuirQuantidade(produto.id)}
+                onClick={() => {diminuirQuantidade(produto.id);redquantidade();}}
               >
                 Diminuir quantidade
               </button>
               <button
                 className="bcolor  px-4 py-2 text-white"
-                onClick={() => aumentarQuantidade(produto.id)}
+                onClick={() => {aumentarQuantidade(produto.id); addquantidade();}}
+
+
               >
                 Aumentar quantidade
               </button>
@@ -50,6 +107,7 @@ const Carrinho = () => {
         </div>
         <div className="suma">
           <div>
+            <img src={awaitcat} style={{ width: "50%", margin: "0 auto" }}></img>
             <h1 className="pt-10 font-bold text-2xl">Sumario: </h1>
             <h2 className="text-emerald-600 text-3xl pb-10 ">
               Total: R$ {total}
@@ -61,11 +119,11 @@ const Carrinho = () => {
                 Continuar Comprando
               </button>
             </Link>
-            <Link to="/pedido">
-              <button className="m-2 bcolor px-4 py-2 text-white">
-                Finalizar Pedido
+            
+              <button className="m-2 bcolor px-4 py-2 text-white" onClick={finalizarPedido}>
+                Confirmar Pedido
               </button>
-            </Link>
+            
           </div>
         </div>
       </div>
