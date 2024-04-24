@@ -1,14 +1,57 @@
-import React, { useContext } from 'react'
+import React, { useContext,useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { CarrinhoContext } from '../context/CarrinhoContext'
+import axios from 'axios'
+import notification_sound from './CSS/notification_sound.mp3'
 
 const Pedido = () => {
   const { total } = useContext(CarrinhoContext);
 
+  const handleEmail_preparando = () => {
+    axios.get('http://localhost:8000/pedido-finalizado/', {
+        headers: {
+            'Content-Type': 'application/json',
+            // 'Authorization': 'Token seu_token_aqui' // se você estiver usando autenticação
+        },
+    })
+    .then((response) => {
+        console.log(response.data);
+    })
+    .catch((error) => {
+        console.error('Erro:', error);
+    });
+};
+
+const [pedido_finalizado, setPedido_Finalizado] = useState()
+const redirecionar_status = useNavigate();
+const audio = new Audio(notification_sound)
+const finalizarPedido_Status = () => {
+  setPedido_Finalizado(true);
+  audio.play()
+  setTimeout(() => {
+    redirecionar_status('/pedido-finalizado');
+  }, 5800);
+  handleEmail_preparando();
+}
+
+
+
+
+
+
   return (
-    <div className=''>
-      <div className='flex pb-60'>
-      <h1 className='font-black text-5xl'>Finalize seu pedido.</h1>
+    <div>
+      <div>
+      {pedido_finalizado && (
+      <div className="" style={{ width: "50%", margin: "0 auto" }}>
+        <div role="alert" className="alert alert-success">
+          <svg xmlns="http://www.w3.org/2000/svg" className="loading loading-dots loading-xs stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span className="">Finalizando seu pedido! &#10084;</span>
+        </div>
+      </div>
+    )}
+      <h1 className='flex pb-60 font-black text-5xl'>Finalize seu pedido.</h1>
       </div>
       <div>
         Sumario
@@ -17,7 +60,7 @@ const Pedido = () => {
         </h2>
       </div>
       <div className='justify-center flex m-2 rounded bg-cyan-950 px-4 py-2 text-white'>
-        <button><Link to={'/pedido-finalizado'}>Finalizar pedido</Link></button>
+        <button onClick={finalizarPedido_Status}>Finalizar pedido</button>
       </div>
     </div>
   )

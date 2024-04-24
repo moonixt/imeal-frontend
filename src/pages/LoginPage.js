@@ -27,7 +27,7 @@ const LoginPage = () => {
           <div></div>
         </div>
 
-        {/* <div>
+        <div>
         <h1 className="sign-in-onboard__title">
             Fazer login
           </h1>
@@ -85,7 +85,7 @@ const LoginPage = () => {
             </button>
           
           
-        </div> */}
+        </div> 
 
         <div className="sign-in-onboard ">
           
