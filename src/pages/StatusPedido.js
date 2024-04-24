@@ -11,8 +11,8 @@ const StatusPedido = () => {
       <ul className="steps">
   <li data-content="?" className="step step-neutral">Preparando Pedido</li>
   <li data-content="!" className="step step-neutral">Pedido Pronto</li>
+  <li data-content="✓" className="step step-neutral">Retirada</li>
   <li data-content="✓" className="step step-neutral">Saiu para entrega</li>
-  
 </ul>
         
       </div>
