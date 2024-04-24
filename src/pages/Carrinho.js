@@ -3,10 +3,32 @@ import { CarrinhoContext } from "../context/CarrinhoContext";
 import { Link, useNavigate } from "react-router-dom";
 import notificationsound from './CSS/notification_sound.mp3'
 import awaitcat from './CSS/awaiting.gif'
+import axios from "axios";
 
 const Carrinho = () => {
-  const { carrinho, aumentarQuantidade, diminuirQuantidade, total } =
+
+const { carrinho, aumentarQuantidade, diminuirQuantidade, total } =
     useContext(CarrinhoContext);
+
+  const handleEmail = () => {
+      axios.get('http://localhost:8000/confirmar/', {
+          headers: {
+              'Content-Type': 'application/json',
+              // 'Authorization': 'Token seu_token_aqui' // se você estiver usando autenticação
+          },
+      })
+      .then((response) => {
+          console.log(response.data);
+      })
+      .catch((error) => {
+          console.error('Erro:', error);
+      });
+  };
+
+
+
+
+
 
 const [AddQuantidade, setAddQuantidade] = useState(false);
 const addquantidade = () => {
@@ -33,7 +55,8 @@ const finalizarPedido = () => {
   audio.play()
   setTimeout(() => {
     redirecionar('/pedido');
-  }, 1800);
+  }, 5800);
+  handleEmail();
 }
 
 
