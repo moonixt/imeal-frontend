@@ -2,8 +2,8 @@ import React, {useEffect, useRef} from 'react'
 import food1 from './CSS/food.jpg'
 import { Link } from 'react-router-dom'
 import "../index.css"
-import rest from './CSS/rest.jpg'
-import prod from './CSS/prod.jpg'
+import rest from './CSS/althome.jpg'
+import prod from './CSS/rest.jpg'
 
 
 const HomePage = () => {

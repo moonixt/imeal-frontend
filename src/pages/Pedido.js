@@ -51,7 +51,41 @@ const finalizarPedido_Status = () => {
         </div>
       </div>
     )}
-      <h1 className='flex pb-60 font-black text-5xl'>Finalize seu pedido.</h1>
+      <h1 className='flex pb-60 font-black text-5xl justify-center'>Finalize seu pedido.</h1>
+      </div>
+      <div className='flex justify-center'>
+      <label className="form-control w-full max-w-xs">
+  <div className="label">
+    <span className="label-text"></span>
+   
+  </div>
+  <select className="select select-bordered">
+    <option disabled selected>Selecione o tipo de entrega</option>
+    <option>Entregar no endereço</option>
+    <option>Retirada</option>
+  </select>
+  <div className="label">
+   
+  </div>
+</label>
+      </div>
+      <div className='flex justify-center'>
+      <label className="form-control w-full max-w-xs">
+  <div className="label">
+    <span className="label-text"></span>
+   
+  </div>
+  <select className="select select-bordered">
+    <option disabled selected>Escolha uma forma de pagamento</option>
+    <option>Cartão de crédito</option>
+    <option>Pix</option>
+    <option>Google Pay</option>
+    <option>Cartão de débito</option>
+  </select>
+  <div className="label">
+   
+  </div>
+</label>
       </div>
       <div>
         Sumario
