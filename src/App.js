@@ -23,13 +23,18 @@ import DeletarRestaurante from "./pages/DeletarRestaurante";
 import Pedido from "./pages/Pedido";
 import StatusPedido from "./pages/StatusPedido";
 import DeletarEndereco from "./pages/DeletarEndereco";
-
+import { AuthContextProvider } from "./context/FirebaseContext";
+import DadosUsuario from "./pages/DadosUsuario";
+import DadosUsuarioProtected from "./utils/DadosUsuarioProtected";
+import InfoPessoais from "./pages/InfoPessoais";
+import DadosContato from "./pages/DadosContato";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <AuthProvider>
+        <AuthContextProvider>
         <CarrinhoProvider>
             <Header />
             <Routes>
@@ -51,6 +56,14 @@ function App() {
               <Route path="/pedido" element={<Pedido/>}></Route>
               <Route path="/pedido-finalizado" element={<StatusPedido/>}></Route>
               <Route path="/deletar-endereco" element={<DeletarEndereco/>}></Route>
+              <Route path="/conta" element={<DadosUsuarioProtected>
+                <DadosUsuario />
+              </DadosUsuarioProtected>}></Route>
+              <Route path="/informacao-pessoais" element={<InfoPessoais/>}></Route>
+              <Route path="/dados-contato" element={<DadosContato/>}></Route>
+
+
+
 
 
 
@@ -62,6 +75,7 @@ function App() {
             </Routes>
             <Footer/>
         </CarrinhoProvider>
+        </AuthContextProvider>
         </AuthProvider>
       </Router>
     </div>

@@ -1,4 +1,10 @@
-import React, { useContext, useRef, useEffect, useState, useCallback } from "react"; // importações de hooks do REACT
+import React, {
+  useContext,
+  useRef,
+  useEffect,
+  useState,
+  useCallback,
+} from "react"; // importações de hooks do REACT
 import { Link } from "react-router-dom"; //Importação de componente LINK para uso
 import tit from "../pages/CSS/OIG1.k.jpeg"; //Importação de imagem na barra de navegação
 import AuthContext from "../context/AuthContext"; //Importação de contexto de autenticação, não sendo utilizado no momento
@@ -13,31 +19,35 @@ import axios from "axios"; // Importação de framework axios para requisições
 import { PiHouseLineBold } from "react-icons/pi"; // Importação de icone
 import { BsPersonCircle } from "react-icons/bs"; //importação de icone de usuario na barra de navegação
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
-import MapStyle from "../MapStyle"
+import MapStyle from "../MapStyle";
 import { BsPencil } from "react-icons/bs";
-
-
-
+import { UserAuth } from "../context/FirebaseContext";
 
 const libraries = ["places"];
-const loadScriptOptions ={
+const loadScriptOptions = {
   googleMapsApiKey: "AIzaSyA60Y3t48fnyE4J_JlW_JOgBV-uaLMaaJA",
   libraries,
-
-}
+};
 
 const Header = () => {
+  // let { user, logoutUser } = useContext(AuthContext);
+  const { user, logOut } = UserAuth();
 
-  let { user, logoutUser } = useContext(AuthContext);
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const [logradouro, setLogradouro] = useState(""); // Estado para o endereço ser salvo, Com o Google maps
   const [numero, setNumero] = useState(""); //Estado para o número ser salvo
   const [complemento, setComplemento] = useState(""); //Estado para o complemento ser salvo
   const [ponto_ref, setPonto_ref] = useState(""); //Estado para o ponto de referência ser salvo
 
-
-
-const handleSubmit = async (event) => { // Inicio de Função assincrona de salvar endereço postando na rota
+  const handleSubmit = async (event) => {
+    // Inicio de Função assincrona de salvar endereço postando na rota
     event.preventDefault();
     let formfield = new FormData();
 
@@ -79,7 +89,8 @@ const handleSubmit = async (event) => { // Inicio de Função assincrona de salv
 
   const [ver_endereco, setVer_endereco] = useState([]); //Variavel de estado para leitura do endereço salvos do banco
 
-  useEffect(() => {  //Função de uso de efeito para buscar (get) dos endereços salvos no banco
+  useEffect(() => {
+    //Função de uso de efeito para buscar (get) dos endereços salvos no banco
     const fetchEnderecos = async () => {
       try {
         const response = await axios.get("http://127.0.0.1:8000/enderecos/");
@@ -90,72 +101,62 @@ const handleSubmit = async (event) => { // Inicio de Função assincrona de salv
     };
 
     fetchEnderecos();
-  }, []); //final de função de uso de efeito 
+  }, []); //final de função de uso de efeito
 
- 
+  // IMPLEMENTAÇÃO MAPS
 
- // IMPLEMENTAÇÃO MAPS
+  const mapContainerStyle = {
+    height: "40vh",
+  };
+  const center = {
+    lat: -23.5346793,
+    lng: -46.65297495,
+  };
 
+  const configmap = {
+    styles: MapStyle,
+  };
 
-const mapContainerStyle = {
-  
-  height: "40vh",
-};
-const center = {
-  lat: -23.5346793,
-  lng: -46.65297495,
-};
+  const autoCompleteRef = useRef();
+  const inputRef = useRef();
+  const options = {
+    componentRestrictions: { country: "BR" },
+    fields: ["address_components", "geometry", "icon", "name"],
+    types: ["address"],
+  };
 
-const configmap = {
-  styles: MapStyle,
-  
-}
+  const { isLoaded, loadError } = useLoadScript(loadScriptOptions);
 
- const autoCompleteRef = useRef();
- const inputRef = useRef();
- const options = {
-   componentRestrictions: { country: "BR" },
-   fields: ["address_components", "geometry", "icon", "name"],
-   types: ["address"],
- };
+  useEffect(() => {
+    if (isLoaded) {
+      autoCompleteRef.current = new window.google.maps.places.Autocomplete(
+        inputRef.current,
+        options
+      );
+      autoCompleteRef.current.addListener("place_changed", function () {
+        const place = autoCompleteRef.current.getPlace();
+        const logradouroObj = place.address_components.find((component) =>
+          component.types.includes("route")
+        );
+        if (logradouroObj) {
+          setLogradouro(logradouroObj.long_name);
+        } else {
+          console.log("Logradouro não disponível para este local");
+        }
+      });
+    }
+  }, [isLoaded]);
 
- const { isLoaded, loadError } = useLoadScript(loadScriptOptions);
+  const [markers, setMarkers] = useState([]);
 
+  if (loadError) return "Erro ao carregar mapa";
+  if (!isLoaded) return "Carregando mapa";
 
-
- useEffect(() => {
-   if (isLoaded) {
-     autoCompleteRef.current = new window.google.maps.places.Autocomplete(
-       inputRef.current,
-       options
-     );
-     autoCompleteRef.current.addListener("place_changed", function () {
-       const place = autoCompleteRef.current.getPlace();
-       const logradouroObj = place.address_components.find((component) =>
-         component.types.includes("route")
-       );
-       if (logradouroObj) {
-         setLogradouro(logradouroObj.long_name);
-       } else {
-         console.log("Logradouro não disponível para este local");
-       }
-     });
-   }
- }, [isLoaded]);
-
- const [markers,setMarkers] = useState([]);
-
- if (loadError) return "Erro ao carregar mapa";
- if (!isLoaded) return "Carregando mapa";
-
- function refreshPage(){ 
-  setTimeout(()=>{
-    window.location.reload(false);
-}, 500); 
-}
-
-
-  
+  function refreshPage() {
+    setTimeout(() => {
+      window.location.reload(false);
+    }, 500);
+  }
 
   return (
     <header>
@@ -253,31 +254,32 @@ const configmap = {
                   />
                 </div>
                 <h1 className="text-2xl font-bold justify-center flex pt-10">
-                  Onde você quer receber seu pedido?<PiMapPinLineLight></PiMapPinLineLight>
-                  
+                  Onde você quer receber seu pedido?
+                  <PiMapPinLineLight></PiMapPinLineLight>
                 </h1>
-                <div> 
-                <GoogleMap
-        mapContainerStyle={mapContainerStyle}
-        zoom={10}
-        center={center}
-        options={configmap}
-        onClick={(event) =>{
-          setMarkers(current => [...current,{
-            lat: event.latLng.lat(),
-            lng: event.latLng.lat(),
-            time: new Date()
-
-          }])
-        }} >
-          <Marker position={center}></Marker>
-          {/* {markers.map((marker) => (
+                <div>
+                  <GoogleMap
+                    mapContainerStyle={mapContainerStyle}
+                    zoom={10}
+                    center={center}
+                    options={configmap}
+                    onClick={(event) => {
+                      setMarkers((current) => [
+                        ...current,
+                        {
+                          lat: event.latLng.lat(),
+                          lng: event.latLng.lat(),
+                          time: new Date(),
+                        },
+                      ]);
+                    }}
+                  >
+                    <Marker position={center}></Marker>
+                    {/* {markers.map((marker) => (
              <Marker key={marker.time.toISOString()} position={{lat: marker.lat, lng: marker.lng}}
               />
               ))} */}
-              
-             
-        </GoogleMap>
+                  </GoogleMap>
                 </div>
                 <div className="pb-10 pt-10  ">
                   <div className="pt-10 justify-center">
@@ -336,10 +338,16 @@ const configmap = {
                   </div>
                 </div>
                 <div>
-                  <h1 className="text-3xl flex">Favoritos <Link className="pl-3" to={"/deletar-endereco"} onClick={ refreshPage }><BsPencil /></Link></h1>
-                  
-
-                  
+                  <h1 className="text-3xl flex">
+                    Favoritos{" "}
+                    <Link
+                      className="pl-3"
+                      to={"/deletar-endereco"}
+                      onClick={refreshPage}
+                    >
+                      <BsPencil />
+                    </Link>
+                  </h1>
                 </div>
                 <div
                   id="Leitura enderecos"
@@ -355,14 +363,12 @@ const configmap = {
                           <PiHouseLineBold className="text-2xl ml-1" />
                           {endereco.logradouro}, {endereco.numero},{" "}
                           {endereco.complemento},{endereco.ponto_ref}{" "}
-                          <p className='text-amber-500 pl-2'>Endereço: {endereco.id}</p>
-                          
+                          <p className="text-amber-500 pl-2">
+                            Endereço: {endereco.id}
+                          </p>
                         </Link>
-                        
                       </p>
-                    
                     </div>
-                  
                   ))}
                 </div>
                 <div></div>
@@ -390,7 +396,14 @@ const configmap = {
                 </div>
 
                 <div className="text-sm">
-                  Bem Vindo,<br></br> Faça seu Login ou Cadastro
+                  {user?.displayName ? ( //se o usuario exisitr
+                    <p> Olá,{user?.displayName}</p> // apareça isso
+                  ) : (
+                    <p>
+                      {" "}
+                      Bem Vindo, <br></br> Faça seu Login ou Cadastro
+                    </p> //se não, isso
+                  )}
                 </div>
               </div>
               <ul
@@ -398,10 +411,16 @@ const configmap = {
                 className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 text-black"
               >
                 <li>
-                  <Link to="/login">Entrar</Link>
+                  {user?.displayName ?(
+                  <Link to={'/conta'}><FaGear /> <button>Meus dados</button></Link>
+                ): null}
                 </li>
                 <li>
-                  <p onClick={logoutUser}>Sair</p>{" "}
+                {user?.displayName ? ( //se o usuario exisitr
+                    <button onClick={handleSignOut}>Desconectar</button> // apareça isso
+                  ) : (
+                    <Link to="/login">Entrar</Link> //se não, isso
+                  )}
                 </li>
               </ul>
             </div>

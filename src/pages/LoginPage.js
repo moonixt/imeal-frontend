@@ -1,4 +1,7 @@
 import React, { useContext, useEffect } from "react";
+//
+import { UserAuth } from '../context/FirebaseContext';
+//
 import AuthContext from "../context/AuthContext";
 import {
   FacebookLoginButton,
@@ -14,6 +17,19 @@ import Logphoto from "./CSS/logo.jpg";
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {
+  const { googleSignIn, user } = UserAuth();
+
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+
   const { loginUser } = useContext(AuthContext);
 
   return (
@@ -97,7 +113,7 @@ const LoginPage = () => {
           </span>
 
           <div className="">
-            <GoogleLoginButton onClick={loginGoogle}>
+            <GoogleLoginButton onClick={handleGoogleSignIn}>
               Fazer login com o Google
             </GoogleLoginButton>
           </div>

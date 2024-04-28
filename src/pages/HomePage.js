@@ -6,6 +6,7 @@ import rest from './CSS/althome.jpg'
 import prod from './CSS/rest.jpg'
 
 
+
 const HomePage = () => {
 
   // const autoCompleteRef = useRef();
