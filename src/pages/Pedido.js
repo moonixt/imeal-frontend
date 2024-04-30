@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { CarrinhoContext } from '../context/CarrinhoContext'
 import axios from 'axios'
 import notification_sound from './CSS/notification_sound.mp3'
+import GooglePayButton from '@google-pay/button-react'
 
 const Pedido = () => {
   const { total } = useContext(CarrinhoContext);
@@ -71,17 +72,58 @@ const finalizarPedido_Status = () => {
       </div>
       <div className='flex justify-center'>
       <label className="form-control w-full max-w-xs">
-  <div className="label">
-    <span className="label-text"></span>
-   
-  </div>
-  <select className="select select-bordered">
-    <option disabled selected>Escolha uma forma de pagamento</option>
-    <option>Cartão de crédito</option>
-    <option>Pix</option>
-    <option>Google Pay</option>
-    <option>Cartão de débito</option>
-  </select>
+      <GooglePayButton
+  environment="TEST"
+  buttonLocale="pt"
+  paymentRequest={{
+    apiVersion: 2,
+    apiVersionMinor: 0,
+    allowedPaymentMethods: [
+      {
+        type: 'CARD',
+        parameters: {
+          allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+          allowedCardNetworks: ['MASTERCARD', 'VISA'],
+        },
+        tokenizationSpecification: {
+          type: 'PAYMENT_GATEWAY',
+          parameters: {
+            gateway: 'example',
+            gatewayMerchantId: 'exampleGatewayMerchantId',
+          },
+        },
+      },
+    ],
+    merchantInfo: {
+      merchantId: '12345678901234567890',
+      merchantName: 'Imeal',
+    },
+    transactionInfo: {
+      totalPriceStatus: 'FINAL',
+      totalPriceLabel: 'Total',
+      totalPrice: total.toString(), // Use o valor de total aqui
+      currencyCode: 'BRL',
+      countryCode: 'BR',
+    },
+    callbackIntents: ['PAYMENT_AUTHORIZATION'],
+  }}
+  onLoadPaymentData={paymentRequest => {
+    console.log('Success', paymentRequest);
+  }}
+  onPaymentAuthorized={paymentData => {
+    console.log('Payment Authorised Success', paymentData);
+    finalizarPedido_Status(); // Chame a função aqui
+    return { transactionState: 'SUCCESS'}
+  }}
+  existingPaymentMethodRequired='false'
+  buttonColor='black'
+  buttonType='pay'
+/>
+
+
+
+ 
+
   <div className="label">
    
   </div>

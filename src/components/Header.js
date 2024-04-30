@@ -18,7 +18,7 @@ import mapicon from "../pages/CSS/map.jpg"; //importação de imagem de gato ao 
 import axios from "axios"; // Importação de framework axios para requisições JSON
 import { PiHouseLineBold } from "react-icons/pi"; // Importação de icone
 import { BsPersonCircle } from "react-icons/bs"; //importação de icone de usuario na barra de navegação
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
 import MapStyle from "../MapStyle";
 import { BsPencil } from "react-icons/bs";
 import { UserAuth } from "../context/FirebaseContext";
@@ -126,26 +126,50 @@ const Header = () => {
   };
 
   const { isLoaded, loadError } = useLoadScript(loadScriptOptions);
+  const [location, setLocation] = useState(center);
+  const markerRef = useRef();
 
-  useEffect(() => {
-    if (isLoaded) {
-      autoCompleteRef.current = new window.google.maps.places.Autocomplete(
-        inputRef.current,
-        options
+
+
+  // Atualize a localização e adicione um marcador quando o usuário selecionar um endereço
+// Atualize a localização e adicione um marcador quando o usuário selecionar um endereço
+// Atualize a localização e adicione um marcador quando o usuário selecionar um endereço
+useEffect(() => {
+  if (isLoaded) {
+    autoCompleteRef.current = new window.google.maps.places.Autocomplete(
+      inputRef.current,
+      options
+    );
+    autoCompleteRef.current.addListener("place_changed", function () {
+      const place = autoCompleteRef.current.getPlace();
+      const logradouroObj = place.address_components.find((component) =>
+        component.types.includes("route")
       );
-      autoCompleteRef.current.addListener("place_changed", function () {
-        const place = autoCompleteRef.current.getPlace();
-        const logradouroObj = place.address_components.find((component) =>
-          component.types.includes("route")
-        );
-        if (logradouroObj) {
-          setLogradouro(logradouroObj.long_name);
-        } else {
-          console.log("Logradouro não disponível para este local");
-        }
-      });
-    }
-  }, [isLoaded]);
+      if (logradouroObj) {
+        setLogradouro(logradouroObj.long_name);
+        // Atualize a localização com a geometria do lugar selecionado
+        const newLocation = {
+          lat: place.geometry.location.lat(),
+          lng: place.geometry.location.lng(),
+        };
+        setLocation(newLocation);
+        // Limpe os marcadores existentes e adicione um novo no local selecionado
+        setMarkers([
+          {
+            lat: newLocation.lat,
+            lng: newLocation.lng,
+            time: new Date(),
+          },
+        ]);
+      } else {
+        console.log("Logradouro não disponível para este local");
+      }
+    });
+  }
+}, [isLoaded]);
+
+
+
 
   const [markers, setMarkers] = useState([]);
 
@@ -258,28 +282,25 @@ const Header = () => {
                   <PiMapPinLineLight></PiMapPinLineLight>
                 </h1>
                 <div>
-                  <GoogleMap
-                    mapContainerStyle={mapContainerStyle}
-                    zoom={10}
-                    center={center}
-                    options={configmap}
-                    onClick={(event) => {
-                      setMarkers((current) => [
-                        ...current,
-                        {
-                          lat: event.latLng.lat(),
-                          lng: event.latLng.lat(),
-                          time: new Date(),
-                        },
-                      ]);
-                    }}
-                  >
-                    <Marker position={center}></Marker>
-                    {/* {markers.map((marker) => (
-             <Marker key={marker.time.toISOString()} position={{lat: marker.lat, lng: marker.lng}}
-              />
-              ))} */}
-                  </GoogleMap>
+                <GoogleMap
+  mapContainerStyle={mapContainerStyle}
+  zoom={17}
+  center={location}
+  onClick={(event) => {
+    setMarkers([
+      {
+        lat: event.latLng.lat(),
+        lng: event.latLng.lng(),
+        time: new Date(),
+      },
+    ]);
+  }}
+>
+  <Marker position={location}></Marker>
+  {markers.map((marker) => (
+    <Marker key={marker.time.toISOString()} position={{lat: marker.lat, lng: marker.lng}} />
+  ))}
+</GoogleMap>
                 </div>
                 <div className="pb-10 pt-10  ">
                   <div className="pt-10 justify-center">
