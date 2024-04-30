@@ -65,6 +65,7 @@ const finalizarPedido = () => {
     message: "Logo finalizaremos",
     theme: "green",
     closeButton: "X",
+    duration: 10000, //optional, default: 5000,
     native:true        
   })
 }
