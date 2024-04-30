@@ -43,7 +43,7 @@ const InfoPessoais = () => {
               <button className="m-2 bcolor px-4 py-2 text-white">
                 Salvar
               </button>
-            
+                
           </div>
       
     </div>

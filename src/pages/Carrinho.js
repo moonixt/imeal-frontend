@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import notificationsound from './CSS/notification_sound.mp3'
 import awaitcat from './CSS/awaiting.gif'
 import axios from "axios";
+import addNotification from 'react-push-notification';
+import { Notifications } from 'react-push-notification';
 
 const Carrinho = () => {
 
@@ -57,12 +59,21 @@ const finalizarPedido = () => {
     redirecionar('/pedido');
   }, 5800);
   handleEmail();
+  addNotification({
+    title: 'Confirmando pedido  ',
+    subtitle: "Oba! Está quase lá",
+    message: "Logo finalizaremos",
+    theme: "green",
+    closeButton: "X",
+    native:true        
+  })
 }
 
 
   
   return (
     <div>
+      
     {pedidoConfirmado && (
       <div className="" style={{ width: "50%", margin: "0 auto" }}>
         <div role="alert" className="alert alert-success">
@@ -144,6 +155,7 @@ const finalizarPedido = () => {
             </Link>
             
               <button className="m-2 bcolor px-4 py-2 text-white" onClick={finalizarPedido}>
+             
                 Confirmar Pedido
               </button>
             
