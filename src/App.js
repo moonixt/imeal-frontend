@@ -53,12 +53,10 @@ function App() {
               <Route path="/sobre" element={<Sobre/>}></Route>
               <Route path="/atualizar-restaurante" element={<AtualizarRestaurante/>}></Route>
               <Route path="/deletar-restaurante" element={<DeletarRestaurante/>}></Route>
-              <Route path="/pedido" element={<Pedido/>}></Route>
+              <Route path="/pedido" element={<DadosUsuarioProtected><Pedido/></DadosUsuarioProtected>}></Route>
               <Route path="/pedido-finalizado" element={<StatusPedido/>}></Route>
               <Route path="/deletar-endereco" element={<DeletarEndereco/>}></Route>
-              <Route path="/conta" element={<DadosUsuarioProtected>
-                <DadosUsuario />
-              </DadosUsuarioProtected>}></Route>
+              <Route path="/conta" element={<DadosUsuarioProtected><DadosUsuario /></DadosUsuarioProtected>}></Route>
               <Route path="/informacao-pessoais" element={<InfoPessoais/>}></Route>
               <Route path="/dados-contato" element={<DadosContato/>}></Route>
 

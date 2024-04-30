@@ -6,26 +6,15 @@ import awaitcat from './CSS/awaiting.gif'
 import axios from "axios";
 import addNotification from 'react-push-notification';
 import { Notifications } from 'react-push-notification';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import DoDisturbOnIcon from '@mui/icons-material/DoDisturbOn';
 
 const Carrinho = () => {
 
 const { carrinho, aumentarQuantidade, diminuirQuantidade, total } =
     useContext(CarrinhoContext);
 
-  const handleEmail = () => {
-      axios.get('http://localhost:8000/confirmar/', {
-          headers: {
-              'Content-Type': 'application/json',
-              // 'Authorization': 'Token seu_token_aqui' // se você estiver usando autenticação
-          },
-      })
-      .then((response) => {
-          console.log(response.data);
-      })
-      .catch((error) => {
-          console.error('Erro:', error);
-      });
-  };
+  
 
 
 
@@ -37,7 +26,7 @@ const addquantidade = () => {
   setAddQuantidade(true);
   setTimeout(() => {
     setAddQuantidade(false);
-  }, 1000);
+  }, 5000);
 
 }
 
@@ -46,7 +35,7 @@ const redquantidade = () => {
   setDdQuantidade(true);
   setTimeout(() => {
     setDdQuantidade(false);
-  }, 1000);
+  }, 5000);
 }
 
 const [pedidoConfirmado, setPedidoConfirmado] = useState(false);
@@ -58,7 +47,6 @@ const finalizarPedido = () => {
   setTimeout(() => {
     redirecionar('/pedido');
   }, 5800);
-  handleEmail();
   addNotification({
     title: 'Confirmando pedido  ',
     subtitle: "Oba! Está quase lá",
@@ -83,23 +71,9 @@ const finalizarPedido = () => {
         </div>
       </div>
     )}
-    <div>
-      {AddQuantidade && (
-        <div role="alert" className="alert alert-info" style={{ width: "50%", margin: "0 auto" }}>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-current shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        <span>Aumentou quantidade.</span>
-      </div>
-      )}
-      <div>
-      {DdQuantidade && (
-        <div role="alert" className="alert alert-error" style={{ width: "50%", margin: "0 auto" }}>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-current shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        <span>Reduziu quantidade.</span>
-      </div>
-      )}
-      </div>
-    </div>
-      <h1 className="text-5xl pb-10 justify-center flex">Carrinho de compras</h1>
+    
+    <div className="alinhamento-endereco">
+      <h1 className="text-5xl pb-10 justify-center flex ">Carrinho de compras</h1>
       <div id="layout" className="justify-center">
         <div>
         {Object.values(carrinho).map((produto) => (
@@ -125,7 +99,7 @@ const finalizarPedido = () => {
                 className="bcolor px-4 py-2 text-white"
                 onClick={() => {diminuirQuantidade(produto.id);redquantidade();}}
               >
-                Diminuir quantidade
+                <DoDisturbOnIcon/>
               </button>
               <button
                 className="bcolor  px-4 py-2 text-white"
@@ -133,22 +107,38 @@ const finalizarPedido = () => {
 
 
               >
-                Aumentar quantidade
+                <AddCircleIcon/>
               </button>
             </div>
             {/* Renderize outros detalhes do produto aqui */}
           </div>
         ))}
+        <div>
+      {AddQuantidade && (
+        <div role="alert" className="alert alert-info" style={{ width: "100%", margin: "0 auto" }}>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-current shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span>Aumentou quantidade.</span>
+      </div>
+      )}
+      <div>
+      {DdQuantidade && (
+        <div role="alert" className="alert alert-error" style={{ width: "100%", margin: "0 auto" }}>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-current shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span>Reduziu quantidade.</span>
+      </div>
+      )}
+      </div>
+    </div>
         </div>
-        <div className="suma">
+        </div>
+        <div className=" ">
           <div>
-            <img src={awaitcat} style={{ width: "50%", margin: "0 auto" }}></img>
-            <h1 className="pt-10 font-bold text-2xl">Sumario: </h1>
-            <h2 className="text-emerald-600 text-3xl pb-10 ">
-              Total: R$ {total}
+            <h1 className=" font-bold text-2xl justify-center flex">Subtotal: </h1>
+            <h2 className="text-emerald-600 text-3xl pb-10 justify-center flex">
+              R$ {total}
             </h2>
           </div>
-          <div className="flex">
+          <div className="flex justify-center">
             <Link to="/produtos">
               <button className="m-2 bcolor px-4 py-2 text-white">
                 Continuar Comprando

@@ -15,6 +15,8 @@ import {
 import { getRedirectResult } from "firebase/auth";
 import Logphoto from "./CSS/logo.jpg";
 import { Link } from "react-router-dom";
+import tit from "../pages/CSS/OIG1.k.jpeg"; //Importação de imagem na barra de navegação
+
 
 const LoginPage = () => {
   const { googleSignIn, user } = UserAuth();
@@ -33,17 +35,17 @@ const LoginPage = () => {
   const { loginUser } = useContext(AuthContext);
 
   return (
-    <div className="authentication__wrapper font-bold">
+    <div className="authentication__wrapper font-bold pt-10">
       <div className="authentication__illustration">
      
       </div>
 
       <div className="justify-center">
-        <div>
-          <div></div>
+        <div className="flex justify-center">
+          <div><img src={tit} style={{width: 350, height: 350}} /></div>
         </div>
 
-        <div>
+        {/* <div>
         <h1 className="sign-in-onboard__title">
             Fazer login
           </h1>
@@ -101,22 +103,19 @@ const LoginPage = () => {
             </button>
           
           
-        </div> 
+        </div>  */}
 
         <div className="sign-in-onboard ">
           
-          <span className="face">
-            {""}
-            <FacebookLoginButton onClick={loginFacebook}>
-              Continuar com Facebook
-            </FacebookLoginButton>
-          </span>
+         
 
-          <div className="">
+          <div className="pt-5">
             <GoogleLoginButton onClick={handleGoogleSignIn}>
               Fazer login com o Google
             </GoogleLoginButton>
           </div>
+
+          
 
           <div className="sign-in-onboard__btnContainer ">
             <button className="bcolor px-4 py-2 text-white">

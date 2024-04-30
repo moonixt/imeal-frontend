@@ -15,10 +15,16 @@ import im3 from "./CSS/3.jpg"
 import im4 from "./CSS/4.jpg"
 import im5 from "./CSS/5.jpg"
 import im6 from "./CSS/6.jpg"
+// MUI IMPORTS
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
+
 
 const Produtos = () => {
 
   const [produtos, setProdutos] = useState([])
+  const [value, setValue] = React.useState(2);
 
   
   
@@ -121,10 +127,16 @@ const Produtos = () => {
   </div>
 </dialog>
       </div>
+
+      
     <div className=''>
-    <div className=' alinhamento bg-base-100 shadow-xl pt-10 gap-4'>
+   
+    <div className=' alinhamento  bg-base-100 shadow-xl pt-10 gap-4'>
+    
       {produtos.map((produto) => (
+        
         <div key={produto.id} className='alinhamento-produto cardselectprod'>
+          
           
           <img className='pb-2 rounded-2xl ' src={produto.image} alt={produto.nome_produto} style={{paddingLeft:'20px',paddingTop: '20px', width: '190px', height: '150px',}} />
           <h1 className='font-bold'>{produto.nome_produto}</h1>
@@ -133,6 +145,15 @@ const Produtos = () => {
           <p>Restaurante: {produto.nome_restaurante}</p>
           <p className='font-bold'>Identidade de restaurante: {produto.restaurante}</p>
           <p className='text-amber-500'>Código do produto: {produto.id}</p>
+          <Box
+      sx={{
+        '& > legend': { mt: 2 },
+      }}
+    >
+      <Typography component="legend"><p1 className='font-bold'>Avaliação</p1></Typography>
+      <Rating name="read-only" value={4} readOnly />
+      
+    </Box>
           
           
           <Link to='/carrinho'><button className=' bcolor px-4 py-2 text-white' onClick={() => adicionarAoCarrinho(produto)}>Comprar</button></Link> {/* Botão para adicionar ao carrinho */}

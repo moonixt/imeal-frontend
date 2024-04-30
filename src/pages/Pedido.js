@@ -10,6 +10,22 @@ import addNotification from 'react-push-notification';
 const Pedido = () => {
   const { total } = useContext(CarrinhoContext);
 
+  
+  const handleEmail = () => {
+    axios.get('http://localhost:8000/confirmar/', {
+        headers: {
+            'Content-Type': 'application/json',
+            // 'Authorization': 'Token seu_token_aqui' // se você estiver usando autenticação
+        },
+    })
+    .then((response) => {
+        console.log(response.data);
+    })
+    .catch((error) => {
+        console.error('Erro:', error);
+    });
+};
+
   const handleEmail_preparando = () => {
     axios.get('http://localhost:8000/pedido-finalizado/', {
         headers: {
@@ -34,6 +50,7 @@ const finalizarPedido_Status = () => {
   setTimeout(() => {
     redirecionar_status('/pedido-finalizado');
   }, 5800);
+  handleEmail();
   handleEmail_preparando();
   addNotification({
     title: 'Finalizando Pedido ',
@@ -52,7 +69,7 @@ const finalizarPedido_Status = () => {
 
 
   return (
-    <div>
+    <div className='alinhamento-endereco'>
       <div>
       {pedido_finalizado && (
       <div className="" style={{ width: "50%", margin: "0 auto" }}>
@@ -62,7 +79,7 @@ const finalizarPedido_Status = () => {
         </div>
       </div>
     )}
-      <h1 className='flex pb-60 font-black text-5xl justify-center'>Finalize seu pedido.</h1>
+      <h1 className='flex pb-20 font-black text-5xl justify-center'>Prosseguir com pagamento</h1>
       </div>
       <div className='flex justify-center'>
       <label className="form-control w-full max-w-xs">
@@ -70,11 +87,17 @@ const finalizarPedido_Status = () => {
     <span className="label-text"></span>
    
   </div>
-  <select className="select select-bordered">
+  <div>
+        <h1 className='text-4xl'>Subtotal</h1>
+        <h2 className="text-emerald-600 text-4xl pb-5 ">
+          Valor total: R$ {total}
+        </h2>
+      </div>
+  {/* <select className="select select-bordered">
     <option disabled selected>Selecione o tipo de entrega</option>
     <option>Entregar no endereço</option>
     <option>Retirada</option>
-  </select>
+  </select> */}
   <div className="label">
    
   </div>
@@ -139,15 +162,7 @@ const finalizarPedido_Status = () => {
   </div>
 </label>
       </div>
-      <div>
-        Sumario
-        <h2 className="text-emerald-600 text-3xl pb-10 ">
-          Total: R$ {total}
-        </h2>
-      </div>
-      <div className='justify-center flex m-2 rounded bg-cyan-950 px-4 py-2 text-white'>
-        <button onClick={finalizarPedido_Status}>Finalizar pedido</button>
-      </div>
+      
     </div>
   )
 }
