@@ -1,6 +1,35 @@
 import React from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import addNotification from 'react-push-notification';
+import { useState } from 'react';
+//IMPORTS MUI
+import Timeline from '@mui/lab/Timeline';
+import TimelineItem from '@mui/lab/TimelineItem';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
+import TimelineDot from '@mui/lab/TimelineDot';
+import FastfoodIcon from '@mui/icons-material/Fastfood';
+import LaptopMacIcon from '@mui/icons-material/LaptopMac';
+import HotelIcon from '@mui/icons-material/Hotel';
+import RepeatIcon from '@mui/icons-material/Repeat';
+import Typography from '@mui/material/Typography';
+import PaidIcon from '@mui/icons-material/Paid';
+import WidgetsIcon from '@mui/icons-material/Widgets';
+import StickyNote2Icon from '@mui/icons-material/StickyNote2';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import VerifiedIcon from '@mui/icons-material/Verified';
+
+
+
+
+
+
+const StatusPedido = () => {
+
+
 
 
 const handleEmail_aguardando = () => {
@@ -18,8 +47,26 @@ const handleEmail_aguardando = () => {
   });
 };
 
+const [statusAguardando, setStatusAguardando] = useState(false);
+const [statusConfirmado, setStatusConfirmado] = useState(false);
+const [statusSeparando, setStatusSeparando] = useState(false);
+const [statusFaturado, setStatusFaturado] = useState(false);
+const [statusEntrega, setStatusEntrega] = useState(false);
+const [statusConcluido, setStatusConcluido] = useState(false);
+
 const StatusAguardando = () => {
   handleEmail_aguardando();
+  setStatusAguardando('Aguardando pagamento');
+  addNotification({
+    title: 'Aguardando pagamento ',
+    subtitle: "Oba! Está quase lá",
+    message: "Logo finalizaremos",
+    theme: "green",
+    closeButton: "X",
+    duration: 10000, //optional, default: 5000,
+    native:true        
+  })
+  
 }
 
 const handleEmail_pagamentoConfirmado = () => {
@@ -40,6 +87,16 @@ const handleEmail_pagamentoConfirmado = () => {
 
 const StatusConfirmado = () => {
   handleEmail_pagamentoConfirmado();
+  setStatusConfirmado('Pagamento confirmado');
+  addNotification({
+    title: 'Pagamento confirmado ',
+    subtitle: "Oba! Está quase lá",
+    message: "Logo finalizaremos",
+    theme: "green",
+    closeButton: "X",
+    duration: 10000, //optional, default: 5000,
+    native:true        
+  })
 }
 
 
@@ -60,6 +117,16 @@ const handleEmail_separacao = () => {
 
 const StatusSeparacao = () => {
   handleEmail_separacao();
+  setStatusSeparando('Em separacao');
+  addNotification({
+    title: 'Pedido em separação',
+    subtitle: "Oba! Está quase lá",
+    message: "Logo finalizaremos",
+    theme: "green",
+    closeButton: "X",
+    duration: 10000, //optional, default: 5000,
+    native:true        
+  })
 }
 
 const handleEmail_faturado = () => {
@@ -80,6 +147,16 @@ const handleEmail_faturado = () => {
 
 const StatusFaturado = () => {
   handleEmail_faturado();
+  setStatusFaturado('Faturado');
+  addNotification({
+    title: 'Pedido faturado ',
+    subtitle: "Oba! Está quase lá",
+    message: "Logo finalizaremos",
+    theme: "green",
+    closeButton: "X",
+    duration: 10000, //optional, default: 5000,
+    native:true        
+  })
 }
 
 const handleEmail_entrega = () => {
@@ -100,6 +177,16 @@ const handleEmail_entrega = () => {
 
 const StatusEntrega = () => {
   handleEmail_entrega();
+  setStatusEntrega('Entrega');
+  addNotification({
+    title: 'Encaminhado para transporte',
+    subtitle: "Oba! Está quase lá",
+    message: "Logo finalizaremos",
+    theme: "green",
+    closeButton: "X",
+    duration: 10000, //optional, default: 5000,
+    native:true        
+  })
 }
 
 
@@ -121,11 +208,21 @@ const handleEmail_concluido = () => {
 
 const StatusConcluido = () => {
   handleEmail_concluido();
+  setStatusConcluido('Concluido');
+  addNotification({
+    title: 'Pedido Concluido ',
+    subtitle: "Oba! Está quase lá",
+    message: "Logo finalizaremos",
+    theme: "green",
+    closeButton: "X",
+    duration: 10000, //optional, default: 5000,
+    native:true        
+  })
+
+
+
 }
 
-
-
-const StatusPedido = () => {
   return (
     <div>
       <div className='justify-center flex font-bold text-5xl'>
@@ -148,105 +245,115 @@ const StatusPedido = () => {
     <option onClick={StatusEntrega}>Encaminhado para transporte</option>
     <option onClick={StatusConcluido}>Pedido concluido</option>
   </select>
+
+  
   <div className="label">
   </div>
 </label>
+
+
+</div>
+
+        <div>
+        <Timeline position="alternate">
+      <TimelineItem>
+        
+        <TimelineSeparator>
+          <TimelineConnector />
+          <TimelineDot color={statusAguardando === 'Aguardando pagamento' ? 'success' : 'primary'}>
+            <FastfoodIcon />
+          </TimelineDot>
+          <TimelineConnector />
+        </TimelineSeparator>
+        <TimelineContent sx={{ py: '12px', px: 2 }}>
+          <Typography variant="h6" component="span">
+            Aguardando pagamento
+          </Typography>
+          <Typography>Seu pedido está aguardando pagamento!</Typography>
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        
+        <TimelineSeparator>
+          <TimelineConnector />
+          <TimelineDot color={statusConfirmado === 'Pagamento confirmado' ? 'success' : 'primary'}>
+            <PaidIcon/>
+          </TimelineDot>
+          <TimelineConnector />
+        </TimelineSeparator>
+        <TimelineContent sx={{ py: '12px', px: 2 }}>
+          <Typography variant="h6" component="span">
+            Pagamento confirmado
+          </Typography>
+          <Typography>Seu pagamento foi confirmado! Logo entrará em separação.</Typography>
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineSeparator>
+          <TimelineConnector />
+          <TimelineDot color={statusSeparando === 'Em separacao' ? 'success' : 'primary'}>
+            <WidgetsIcon />
+          </TimelineDot>
+          <TimelineConnector  />
+        </TimelineSeparator>
+        <TimelineContent sx={{ py: '12px', px: 2 }}>
+          <Typography variant="h6" component="span">
+            Em separação
+          </Typography>
+          <Typography>Seu pedido está sendo separado.</Typography>
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineSeparator>
+          <TimelineConnector  />
+          <TimelineDot color={statusFaturado === 'Faturado' ? 'success' : 'primary'}>
+            <StickyNote2Icon />
+          </TimelineDot>
+          <TimelineConnector />
+        </TimelineSeparator>
+        <TimelineContent sx={{ py: '12px', px: 2 }}>
+          <Typography variant="h6" component="span">
+            Pedido faturado
+          </Typography>
+          <Typography>Seu pedido foi faturado, clique aqui para baixar a NF</Typography>
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineSeparator>
+          <TimelineConnector  />
+          <TimelineDot color={statusEntrega === 'Entrega' ? 'success' : 'primary'}>
+            <LocalShippingIcon />
+          </TimelineDot>
+          <TimelineConnector />
+        </TimelineSeparator>
+        <TimelineContent sx={{ py: '12px', px: 2 }}>
+          <Typography variant="h6" component="span">
+            Saiu para entrega
+          </Typography>
+          <Typography>Seu pedido saiu para entrega</Typography>
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineSeparator>
+          <TimelineConnector  />
+          <TimelineDot color={statusConcluido === 'Concluido' ? 'success' : 'primary'}>
+            <VerifiedIcon />
+          </TimelineDot>
+          <TimelineConnector />
+        </TimelineSeparator>
+        <TimelineContent sx={{ py: '12px', px: 2 }}>
+          <Typography variant="h6" component="span">
+            Pedido concluido
+          </Typography>
+          <Typography>Seu pedido foi concluido.</Typography>
+        </TimelineContent>
+      </TimelineItem>
+    </Timeline>
+    
         </div>
+</div>
 
-      <div className='flex pb-40 justify-center pt-40  font-black text-2xl'>
-      <ul className="timeline">
-  <li>
-    <div className="timeline-start timeline-box">Aguardando pagamento</div>
-    <div className="timeline-middle">
-      <svg xmlns="http://www.w3.org/2000/svg" 
-      viewBox="0 0 20 20" 
-      fill="currentColor" 
-      className="w-5 h-5 text-primary">
-        <path fillRule="evenodd" 
-        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" 
-        clipRule="evenodd" /></svg>
-    </div>
-    <hr className="bg-primary"/>
-  </li>
-  <li>
-  <hr className="bg-primary"/>
-    <div className="timeline-middle">
-      <svg xmlns="http://www.w3.org/2000/svg" 
-      viewBox="0 0 20 20" 
-      fill="currentColor" 
-      className="w-5 h-5 text-primary">
-        <path fillRule="evenodd" 
-        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" 
-        clipRule="evenodd" /></svg>
-    </div>
-    <div className="timeline-end timeline-box">Pagamento confirmado</div>
-    <hr className="bg-primary"/>
-  </li>
-  <li>
-    <hr className="bg-primary"/>
-    <div className="timeline-start timeline-box">Em separação</div>
-    <div className="timeline-middle">
-      <svg xmlns="http://www.w3.org/2000/svg" 
-      viewBox="0 0 20 20" 
-      fill="currentColor" 
-      className="w-5 h-5 text-primary">
-        <path fillRule="evenodd" 
-        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" 
-        clipRule="evenodd" /></svg>
-    </div>
-    <hr/>
-  </li>
-  <li>
-    <hr/>
-    <div className="timeline-middle">
-      <svg xmlns="http://www.w3.org/2000/svg" 
-      viewBox="0 0 20 20" 
-      fill="currentColor" 
-      className="w-5 h-5"><path fillRul
-      e="evenodd" d="M10 18a8 8
-       0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="eve
-       nodd" /></svg>
-    </div>
-    <div className="timeline-end timeline-box">Pedido faturado</div>
-    <hr/>
-  </li>
-
-  <li>
-    <hr className=""/>
-    <div className="timeline-start timeline-box">Encaminhado para transporte</div>
-    <div className="timeline-middle">
-    <svg xmlns="http://www.w3.org/2000/svg" 
-    viewBox="0 0 20 20" 
-    fill="currentColor" 
-    className="w-5 h-5"><path fillRul
-    e="evenodd" d="M10 18a8 8
-     0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="eve
-     nodd" /></svg>
-    </div>
-    <hr/>
-  </li>
-  
-  <li>
-    <hr/>
-    <div className="timeline-middle">
-      <svg xmlns="http://www.w3.org/2000/svg" 
-      viewBox="0 0 20 20" 
-      fill="currentColor" 
-      className="w-5 h-5"><path fillRul
-      e="evenodd" d="M10 18a8 8
-       0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="eve
-       nodd" /></svg>
-    </div>
-    <div className="timeline-end timeline-box">Pedido concluido</div>
-    <hr/>
-  </li>
-  
-  
-  
-</ul>  
-      </div>
-
-    </div>
+    
   )
 }
 

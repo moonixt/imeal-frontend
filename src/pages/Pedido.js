@@ -5,6 +5,7 @@ import { CarrinhoContext } from '../context/CarrinhoContext'
 import axios from 'axios'
 import notification_sound from './CSS/notification_sound.mp3'
 import GooglePayButton from '@google-pay/button-react'
+import addNotification from 'react-push-notification';
 
 const Pedido = () => {
   const { total } = useContext(CarrinhoContext);
@@ -34,6 +35,15 @@ const finalizarPedido_Status = () => {
     redirecionar_status('/pedido-finalizado');
   }, 5800);
   handleEmail_preparando();
+  addNotification({
+    title: 'Finalizando Pedido ',
+    subtitle: "Oba! Está quase lá",
+    message: "Logo finalizaremos",
+    theme: "green",
+    closeButton: "X",
+    duration: 10000, //optional, default: 5000,
+    native:true        
+  })
 }
 
 
