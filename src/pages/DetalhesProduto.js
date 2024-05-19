@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import GoogleMapReact from 'google-map-react';
+
 
 const DetalhesProduto = () => {
+  
 
 
 const {id} = useParams()
@@ -45,6 +48,9 @@ const [produtos, setProdutos] = useState([])
 
         </div>
       ))}
+      <div>
+          
+      </div>
     </div>
   )
 }

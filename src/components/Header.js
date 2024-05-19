@@ -447,7 +447,7 @@ useEffect(() => {
             </div>
           </li>
 
-          <li></li>
+          <Link to='/sobre'><li>Sobre</li></Link>
         </ul>
       </div>
     </header>
