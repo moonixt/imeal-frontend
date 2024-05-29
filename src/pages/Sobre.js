@@ -10,15 +10,9 @@ const Sobre = () => {
       field:'restaurante',
       headerName: 'Restaurante',
       width: 150,
-      editable: true,
+      editable: false,
     },
-    {
-      field:'data',
-      headerName: 'Data',
-      width: 150,
-      sortable: true,
-      editable: true,
-    },
+    
     {
       field: 'bruto',
       headerName: 'Faturamento Bruto',
@@ -31,7 +25,7 @@ const Sobre = () => {
       headerName: 'Quantidade total',
       type: 'number',
       width: 170,
-      editable: true,
+      editable: false,
     },
     {
       field: 'liquido',
@@ -49,21 +43,15 @@ const Sobre = () => {
       field:'restaurante',
       headerName: 'Restaurante',
       width: 150,
-      editable: true,
+      editable: false,
     },
-    {
-      field:'data',
-      headerName: 'Data',
-      width: 150,
-      sortable: true,
-      editable: true,
-    },
+    
     {
       field:'produto',
       headerName: 'Produto',
       width: 150,
       sortable: true,
-      editable: true,
+      editable: false,
     },
     {
       field: 'bruto',
@@ -77,7 +65,7 @@ const Sobre = () => {
       headerName: 'Quantidade total',
       type: 'number',
       width: 170,
-      editable: true,
+      editable: false,
     },
     {
       field: 'liquido',
@@ -91,28 +79,28 @@ const Sobre = () => {
   ];
   
   const rows = [
-    { restaurante: 'Retrô Burguer',data:'2024-05-19T20:28:35.639574Z',qtd: 2, bruto:100,liquido:87},
-    { restaurante: 'Good Food',data:'2024-05-19T21:15:34.601658Z',qtd: 3, bruto:105,liquido:91.35},
-    { restaurante: 'Kyoko Sushi',data:'2024-05-19T21:21:46.897191Z',qtd: 2, bruto:300,liquido:261},
-    { restaurante: 'Chinese',data:'2024-05-19T21:22:10.060393Z',qtd: 1, bruto:55,liquido:47.85},
-    { restaurante: 'Chef Peruano',data:'2024-05-19T21:27:48.838832Z',qtd: 5, bruto:250,liquido:217.5},
-    { restaurante: 'Arabian',data:'2024-05-19T21:35:14.749953Z',qtd: 7, bruto:175,liquido:152.25},
-    { restaurante: 'Chef Peruano',data:'2024-05-19T21:43:09.715572Z',qtd: 1, bruto:60,liquido:52.2},
-    { restaurante: 'Chef chefinho',data:'2024-05-19T21:54:05.282280Z',qtd: 6, bruto:192.00,liquido:167.04},
+    { restaurante: 'Retrô Burguer',qtd: 2, bruto:'R$ ' + 100,liquido: 'R$ ' +87},
+    { restaurante: 'Good Food',qtd: 3, bruto:'R$ ' + 105,liquido: 'R$ ' +91.35},
+    { restaurante: 'Kyoko Sushi',qtd: 2, bruto:'R$ ' + 300,liquido:'R$ ' +261},
+    { restaurante: 'Chinese',qtd: 1, bruto:'R$ ' +55,liquido:'R$ ' +47.85},
+    { restaurante: 'Chef Peruano',qtd: 5, bruto:'R$ ' +250,liquido:'R$ ' +217.5},
+    { restaurante: 'Arabian',qtd: 7, bruto:'R$ ' +175,liquido:'R$ ' +152.25},
+    { restaurante: 'Chef Peruano',qtd: 1, bruto:'R$ ' +60,liquido:'R$ ' +52.2},
+    { restaurante: 'Chef chefinho',qtd: 6, bruto:'R$ ' +192.00,liquido:'R$ ' +167.04},
 
 
     
   ];
 
   const rows2 = [
-    { restaurante: 'Retrô Burguer',data:'2024-05-19T20:28:35.639574Z',qtd: 2,produto:'Jordan Burguer', bruto:100,liquido:87},
-    { restaurante: 'Good Food',data:'2024-05-19T21:15:34.601658Z',qtd: 3,produto:'Baião de dois', bruto:105,liquido:91.35},
-    { restaurante: 'Kyoko Sushi',data:'2024-05-19T21:21:46.897191Z',qtd: 2,produto:'Combo Sushi', bruto:300,liquido:261},
-    { restaurante: 'Chinese',data:'2024-05-19T21:22:10.060393Z',qtd: 1,produto:'Frango Xadrez', bruto:55,liquido:47.85},
-    { restaurante: 'Chef Peruano',data:'2024-05-19T21:27:48.838832Z',qtd: 5,produto:'Macarronada', bruto:250,liquido:217.5},
-    { restaurante: 'Arabian',data:'2024-05-19T21:35:14.749953Z',qtd: 7,produto:'Tabule', bruto:175,liquido:152.25},
-    { restaurante: 'Chef Peruano',data:'2024-05-19T21:43:09.715572Z',qtd: 1,produto:'Lomo Saltado', bruto:60,liquido:52.2},
-    { restaurante: 'Chef chefinho',data:'2024-05-19T21:54:05.282280Z',qtd: 6,produto:'Frango italiano', bruto:192.00,liquido:167.04},
+    { restaurante: 'Retrô Burguer',data:'2024-05-19T20:28:35.639574Z',qtd: 2,produto:'Jordan Burguer', bruto:'R$ ' + 100,liquido:'R$ ' +87},
+    { restaurante: 'Good Food',data:'2024-05-19T21:15:34.601658Z',qtd: 3,produto:'Baião de dois', bruto:'R$ ' + 105,liquido:'R$ ' +91.35},
+    { restaurante: 'Kyoko Sushi',data:'2024-05-19T21:21:46.897191Z',qtd: 2,produto:'Combo Sushi', bruto:'R$ ' + 300,liquido:'R$ ' +261},
+    { restaurante: 'Chinese',data:'2024-05-19T21:22:10.060393Z',qtd: 1,produto:'Frango Xadrez', bruto:'R$ ' + 55,liquido:'R$ ' +47.85},
+    { restaurante: 'Chef Peruano',data:'2024-05-19T21:27:48.838832Z',qtd: 5,produto:'Macarronada', bruto:'R$ ' + 250,liquido:'R$ ' +217.5},
+    { restaurante: 'Arabian',data:'2024-05-19T21:35:14.749953Z',qtd: 7,produto:'Tabule', bruto:'R$ ' + 175,liquido:'R$ ' +152.25},
+    { restaurante: 'Chef Peruano',data:'2024-05-19T21:43:09.715572Z',qtd: 1,produto:'Lomo Saltado', bruto:'R$ ' + 60,liquido:'R$ ' +52.2},
+    { restaurante: 'Chef chefinho',data:'2024-05-19T21:54:05.282280Z',qtd: 6,produto:'Frango italiano', bruto:'R$ ' + 192.00,liquido:'R$ ' +167.04},
 
 
     
@@ -128,7 +116,7 @@ const Sobre = () => {
         <DataGrid
           rows={rows}
           columns={columns}
-          getRowId={(row) => row.restaurante + row.produto}
+          getRowId={(row) => row.restaurante +row.bruto}
           initialState={{
             pagination: {
               paginationModel: {
@@ -137,8 +125,7 @@ const Sobre = () => {
             },
           }}
           pageSizeOptions={[5]}
-          checkboxSelection
-          disableRowSelectionOnClick
+          
         />
       </Box>
       </div>
@@ -159,9 +146,8 @@ const Sobre = () => {
               },
             },
           }}
-          pageSizeOptions={[5]}
-          checkboxSelection
-          disableRowSelectionOnClick
+          pageSizeOptions={[10]}
+         
         />
       </Box>
       </div>
@@ -171,11 +157,16 @@ const Sobre = () => {
       </div>
       <div className="justify-center flex">
       <BarChart
-  xAxis={[{ scaleType: 'band', data: ['Chef chefinho', 'Retrô Burguer', 'The Grill','Kyoko Sushi','Good Food','Arabian','Italian Pasta','Chinese','Chef Peruano','León'] }]}
+  xAxis={[{ 
+    scaleType: 'band', data: ['Chef chefinho', 'Retrô Burguer', 'The Grill','Kyoko Sushi','Good Food','Arabian','Italian Pasta','Chinese','Chef Peruano','León'],
+    colorMap: {
+      type: 'ordinal',
+      colors: ['#ccebc5', '#a8ddb5', '#7bccc4', '#4eb3d3', '#2b8cbe', '#08589e']}}]}
   
   series={[{ data: [4, 3, 6,9,2,6,7,8,9,7] }]}
-  width={1000}
-  height={300}
+  width={2000}
+  height={600}
+  barLabel="value"
 />
 
       </div>
