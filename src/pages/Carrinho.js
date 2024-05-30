@@ -10,7 +10,8 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import DoDisturbOnIcon from "@mui/icons-material/DoDisturbOn";
 
 const Carrinho = () => {
-  const { carrinho, aumentarQuantidade, diminuirQuantidade, total, cupom, setCupom } =
+  const { carrinho, aumentarQuantidade, diminuirQuantidade, total, cupom, setCupom, deliveryOption,
+    handleDeliveryOptionChange, } =
     useContext(CarrinhoContext);
 
 
@@ -221,13 +222,23 @@ const Carrinho = () => {
             <form className=" font-bold text-2xl justify-center flex" onSubmit={aplicarcupom}>
             <input  type="text"  placeholder="Digite o código do cupom" // Adicione manipuladores de eventos para capturar o valor do cupom
              value={cupom}
-             onChange={(e) => setCupom(e.target.value)}
-/>
+             onChange={(e) => setCupom(e.target.value)} />
+             
 
             </form>
+            <div className="font-bold text-2xl justify-center flex pt-10 pb-10">
+            <select className="select select-bordered " onChange={handleDeliveryOptionChange}>
+    <option disabled selected>Escolha a modalidade</option>
+    <option >Retirar no local</option>
+    <option >Entregar</option>
+    </select>
+            </div>
+            
+         
             <h1 className=" font-bold text-2xl justify-center flex">
               Subtotal:{" "}
             </h1>
+            <h1 className="font-bold text-2xl justify-center flex">Frete: R$ 12 </h1>
             <h2 className="text-emerald-600 text-3xl pb-10 justify-center flex">
               R$ {total}
             </h2>

@@ -18,10 +18,11 @@ import mapicon from "../pages/CSS/map.jpg"; //importação de imagem de gato ao 
 import axios from "axios"; // Importação de framework axios para requisições JSON
 import { PiHouseLineBold } from "react-icons/pi"; // Importação de icone
 import { BsPersonCircle } from "react-icons/bs"; //importação de icone de usuario na barra de navegação
-import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Marker,Polyline, InfoWindow } from "@react-google-maps/api";
 import MapStyle from "../MapStyle";
 import { BsPencil } from "react-icons/bs";
 import { UserAuth } from "../context/FirebaseContext";
+
 
 const libraries = ["places"];
 const loadScriptOptions = {
@@ -78,6 +79,7 @@ const Header = () => {
     } else {
       formfield.append("ponto_ref", ponto_ref);
     }
+    
 
     try {
       await axios.post("http://127.0.0.1:8000/enderecos/", formfield);
@@ -447,7 +449,7 @@ useEffect(() => {
             </div>
           </li>
 
-          <Link to='/sobre'><li>Sobre</li></Link>
+          <Link to='/sobre'><li>Relatórios</li></Link>
         </ul>
       </div>
     </header>

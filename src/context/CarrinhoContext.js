@@ -5,10 +5,10 @@ export const CarrinhoContext = createContext();
 export const CarrinhoProvider = ({ children }) => {
   const [carrinho, setCarrinho] = useState({});
   const [total, setTotal] = useState(0);
-  const [cupom, setCupom] = useState(''); // Estado para o código do cupom
- 
+  const [cupom, setCupom] = useState(''); // State for coupon code
+  const [deliveryOption, setDeliveryOption] = useState(''); // New state for delivery option
+
   useEffect(() => {
-    // Lógica para calcular o novo total com base no cupom
     const novoTotal = Object.values(carrinho).reduce(
       (total, produto) => total + produto.valor * produto.quantidade,
       0
@@ -19,24 +19,27 @@ export const CarrinhoProvider = ({ children }) => {
       0
     );
 
-    // Aplicar desconto com base no código do cupom
+    // Apply discount based on coupon code
     if (cupom === 'DESCONTO10') {
-      const descontoPercentual = 0.1; // 10% de desconto
+      const descontoPercentual = 0.1; // 10% discount
       setTotal(novoTotal * (1 - descontoPercentual));
     } else if (cupom === 'DESCONTO20') {
-      const descontoPercentual = 0.2; // 20% de desconto
+      const descontoPercentual = 0.2; // 20% discount
       setTotal(novoTotal * (1 - descontoPercentual));
     } else if (cupom === 'DESCONTO50') {
-      const descontoPercentual = 0.5; // 50% de desconto
+      const descontoPercentual = 0.5; // 50% discount
       setTotal(novoTotal * (1 - descontoPercentual));
     } else {
       setTotal(novoTotal);
     }
+
+    // Include delivery fee when delivery option is selected
+    if (deliveryOption === 'Entregar') {
+      setTotal(total + 12); // Add delivery fee of R$12
+    }
+
     console.log('Quantidade total de produtos:', quantidadeTotal);
-
-  }, [carrinho, cupom]);
-
-  
+  }, [carrinho, cupom, deliveryOption]);
 
   const aumentarQuantidade = (id) => {
     setCarrinho({
@@ -63,7 +66,10 @@ export const CarrinhoProvider = ({ children }) => {
     }
   };
 
-  
+  const handleDeliveryOptionChange = (event) => {
+    setDeliveryOption(event.target.value);
+  };
+
   return (
     <CarrinhoContext.Provider
       value={{
@@ -74,6 +80,8 @@ export const CarrinhoProvider = ({ children }) => {
         total,
         cupom,
         setCupom,
+        deliveryOption,
+        handleDeliveryOptionChange,
       }}
     >
       {children}

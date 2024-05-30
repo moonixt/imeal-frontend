@@ -34,7 +34,7 @@ const Sobre = () => {
       sortable: true,
       width: 260,
     },
-   
+    
     
   ];
 
@@ -109,7 +109,7 @@ const Sobre = () => {
   return (
     <div >
       <div className="justify-center flex font-bold text-5xl pb-5">
-        <h1>Faturamento Mensal</h1>
+        <h1><u>Faturamento Mensal</u></h1>
       </div>
       <div className="justify-center flex">
       <Box sx={{ height: 500, width: '50%' }}>
@@ -131,7 +131,7 @@ const Sobre = () => {
       </div>
       <div>
       <div className="justify-center flex font-bold text-5xl pb-5 pt-10">
-        <h1>Produtos mais vendidos</h1>
+        <h1><u>Produtos mais vendidos</u></h1>
         </div>
         <div className="justify-center flex">
         <Box sx={{ height: 500, width: '50%' }}>
@@ -153,7 +153,7 @@ const Sobre = () => {
       </div>
       </div>
       <div className="justify-center flex font-bold text-5xl pt-10 pb-5">
-        <h1>Demanda de pedidos</h1>
+        <h1><u>Demanda de pedidos mensal</u></h1>
       </div>
       <div className="justify-center flex">
       <BarChart
@@ -161,7 +161,7 @@ const Sobre = () => {
     scaleType: 'band', data: ['Chef chefinho', 'Retrô Burguer', 'The Grill','Kyoko Sushi','Good Food','Arabian','Italian Pasta','Chinese','Chef Peruano','León'],
     colorMap: {
       type: 'ordinal',
-      colors: ['#ccebc5', '#a8ddb5', '#7bccc4', '#4eb3d3', '#2b8cbe', '#08589e']}}]}
+      colors: ['#ccebc5','#E59CFF','#F10D7E','#0DF15A','#DBF10D','#330067','#953E05','#FC0404','#8E8BFF','#226F1F' ,'#a8ddb5', '#7bccc4', '#4eb3d3','#F1B90D','#0DC6F1', '#2b8cbe','#C60DF1', '#08589e']}}]}
   
   series={[{ data: [4, 3, 6,9,2,6,7,8,9,7] }]}
   width={2000}
